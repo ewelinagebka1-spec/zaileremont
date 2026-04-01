@@ -1,6 +1,7 @@
 'use client';
 
 import Button from './Button';
+import CountdownTimer from './CountdownTimer';
 
 interface PriceResultProps {
   // Wzorzec 1: z MapaCen
@@ -105,10 +106,13 @@ export default function PriceResult(props: PriceResultProps) {
         </p>
       </div>
 
+      {/* Countdown */}
+      <CountdownTimer className="mb-4" />
+
       {/* CTA Button */}
       <a href="/kup-raport" className="block">
         <Button variant="cta" size="lg" className="w-full">
-          Pobierz pełny raport — <span className="line-through opacity-60 mr-1">69 zł</span> 29,99 zł
+          Pobierz pełny raport — <span className="line-through text-red-300 decoration-red-500 decoration-2 mr-1 text-lg">69,99 zł</span> <span className="text-xl font-extrabold">29,99 zł</span>
         </Button>
       </a>
     </div>

@@ -2,6 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useState } from 'react';
+import CountdownTimer from '@/components/ui/CountdownTimer';
 
 function KupRaportContent() {
   const searchParams = useSearchParams();
@@ -92,45 +93,39 @@ function KupRaportContent() {
           </div>
         </div>
 
-        {/* Podgląd raportu */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-md overflow-hidden mb-6">
-          <div className="bg-slate-800 text-white px-6 py-3 flex items-center justify-between">
-            <span className="text-sm font-medium">Podgląd przykładowego raportu</span>
-            <a
-              href="/raport-przyklad.pdf"
-              target="_blank"
-              className="text-xs text-blue-300 hover:text-blue-200 underline"
-            >
-              Otwórz pełny podgląd PDF
-            </a>
-          </div>
-          <div className="p-4 bg-slate-50">
-            <div className="grid grid-cols-3 gap-3 text-center text-xs">
-              <div className="bg-white rounded-lg border border-slate-200 p-3">
-                <p className="text-slate-400 uppercase font-medium mb-1">Strona 1</p>
-                <p className="font-semibold text-slate-700">Rozkład cen MIN / MED / MAX</p>
-                <p className="text-slate-400 mt-1">Ceny w 15 miastach</p>
-              </div>
-              <div className="bg-white rounded-lg border border-slate-200 p-3">
-                <p className="text-slate-400 uppercase font-medium mb-1">Strona 3</p>
-                <p className="font-semibold text-slate-700">Porównanie dostawców</p>
-                <p className="text-slate-400 mt-1">IKEA, Agata, Castorama, stolarz</p>
-              </div>
-              <div className="bg-white rounded-lg border border-slate-200 p-3">
-                <p className="text-slate-400 uppercase font-medium mb-1">Strona 5</p>
-                <p className="font-semibold text-slate-700">Checklista negocjacyjna</p>
-                <p className="text-slate-400 mt-1">20 punktów do sprawdzenia</p>
-              </div>
+        {/* Podgląd raportu — klikalny do płatności */}
+        <a href={stripeUrl} className="block mb-6 group">
+          <div className="bg-white rounded-xl border border-slate-200 shadow-md overflow-hidden hover:border-orange-300 hover:shadow-lg transition-all cursor-pointer">
+            <div className="bg-slate-800 text-white px-6 py-3 flex items-center justify-between">
+              <span className="text-sm font-medium">Podgląd przykładowego raportu</span>
+              <span className="text-xs text-orange-300 group-hover:text-orange-200 font-medium">
+                Kup teraz za 29,99 zł →
+              </span>
             </div>
-            <a
-              href="/raport-przyklad.pdf"
-              target="_blank"
-              className="block text-center text-sm text-blue-600 hover:text-blue-800 font-medium mt-3"
-            >
-              Zobacz przykładowy raport (7 stron) →
-            </a>
+            <div className="p-4 bg-slate-50">
+              <div className="grid grid-cols-3 gap-3 text-center text-xs">
+                <div className="bg-white rounded-lg border border-slate-200 p-3 group-hover:border-orange-200 transition-colors">
+                  <p className="text-slate-400 uppercase font-medium mb-1">Strona 1</p>
+                  <p className="font-semibold text-slate-700">Rozkład cen MIN / MED / MAX</p>
+                  <p className="text-slate-400 mt-1">Ceny w 15 miastach</p>
+                </div>
+                <div className="bg-white rounded-lg border border-slate-200 p-3 group-hover:border-orange-200 transition-colors">
+                  <p className="text-slate-400 uppercase font-medium mb-1">Strona 3</p>
+                  <p className="font-semibold text-slate-700">Porównanie dostawców</p>
+                  <p className="text-slate-400 mt-1">IKEA, Agata, Castorama, stolarz</p>
+                </div>
+                <div className="bg-white rounded-lg border border-slate-200 p-3 group-hover:border-orange-200 transition-colors">
+                  <p className="text-slate-400 uppercase font-medium mb-1">Strona 5</p>
+                  <p className="font-semibold text-slate-700">Checklista negocjacyjna</p>
+                  <p className="text-slate-400 mt-1">20 punktów do sprawdzenia</p>
+                </div>
+              </div>
+              <p className="text-center text-sm text-orange-600 group-hover:text-orange-700 font-semibold mt-3">
+                Kup pełny raport (7 stron) — <span className="line-through text-slate-400 decoration-red-400 decoration-2">69,99 zł</span> <span className="text-orange-700 text-base font-extrabold">29,99 zł</span> →
+              </p>
+            </div>
           </div>
-        </div>
+        </a>
 
         {/* Karta produktu z płatnością */}
         <div className="bg-white rounded-xl border-2 border-orange-200 shadow-lg overflow-hidden mb-8">
@@ -141,10 +136,12 @@ function KupRaportContent() {
                 <p className="text-orange-100 text-sm mt-0.5">Dostajesz na e-mail w 30 sekund</p>
               </div>
               <div className="text-right">
-                <span className="text-base line-through text-white/60 block">69 zł</span>
-                <span className="text-3xl font-bold">29,99 zł</span>
+                <span className="text-lg line-through text-white/50 decoration-red-300 decoration-2 block">69,99 zł</span>
+                <span className="text-4xl font-extrabold">29,99 zł</span>
+                <span className="block text-xs text-orange-200 font-medium mt-0.5">-57% taniej!</span>
               </div>
             </div>
+            <CountdownTimer className="mt-3" />
           </div>
 
           <div className="px-6 py-5">
@@ -209,7 +206,7 @@ function KupRaportContent() {
               href={stripeUrl}
               className="block w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-lg transition-colors text-center shadow-lg hover:shadow-xl text-lg"
             >
-              Kupuję raport — <span className="line-through opacity-60 mr-1">69 zł</span> 29,99 zł
+              Kupuję raport — <span className="line-through text-white/50 decoration-red-300 decoration-2 mr-1">69,99 zł</span> <span className="text-xl font-extrabold">29,99 zł</span>
             </a>
 
             <div className="flex items-center justify-center gap-4 mt-3 text-xs text-slate-400">

@@ -6,6 +6,7 @@ import Button from '@/components/ui/Button';
 import RadioGroup from '@/components/ui/RadioGroup';
 import CityAutocomplete from '@/components/ui/CityAutocomplete';
 import StepIndicator from '@/components/ui/StepIndicator';
+import CountdownTimer from '@/components/ui/CountdownTimer';
 import { CityData } from '@/data/cities';
 
 const STEPS = [
@@ -969,12 +970,13 @@ export default function KitchenCalculator() {
                     Ceny AGD do zabudowy — ranking cenowy w Twoim mieście
                   </li>
                 </ul>
+                <CountdownTimer className="mb-3" />
                 <div className="flex items-center gap-4">
                   <a
                     href={`/kup-raport?typ=kuchnia&ksztalt=${kitchenShape}&dlugosc=${breakdown.totalLengthMb}&fronty=${frontMaterial}&blat=${countertop}&miasto=${city?.slug || ''}`}
                     className="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3.5 px-6 rounded-lg transition-colors text-center shadow-lg hover:shadow-xl block"
                   >
-                    Kup raport — <span className="line-through text-white/60 mr-1">69 zł</span> 29,99 zł
+                    Kup raport — <span className="line-through text-white/50 decoration-red-300 decoration-2 mr-1">69,99 zł</span> <span className="text-lg font-extrabold">29,99 zł</span>
                   </a>
                   <div className="text-right shrink-0">
                     <p className="text-xs text-slate-400">Średnio oszczędzasz</p>
