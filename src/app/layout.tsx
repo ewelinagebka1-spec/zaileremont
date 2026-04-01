@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import CookieBanner from "@/components/layout/CookieBanner";
 import "./globals.css";
 
 const inter = Inter({
@@ -10,49 +11,51 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Mapa Cen Remontów | zaileremont.pl",
+  title: "Ile kosztuje remont? Mapa Cen Remontów 2026 | ilezaremont.pl",
   description:
-    "Kompleksowa analiza cen remontów i budowy w Polsce. Kalkulator kosztów, mapa cen, poradniki eksperckie. Dane rzeczywiste, algorytm, aktualne trendy.",
+    "Sprawdź ile kosztuje remont w Twoim mieście. Kalkulatory kosztów, mapa cen remontów, poradniki eksperckie. Dane dla 333 miast w Polsce.",
   keywords: [
+    "ile kosztuje remont",
     "ceny remontów",
     "kalkulator remontów",
     "koszt remontu",
     "mapa cen",
     "remont domu",
     "remont mieszkania",
+    "ilezaremont",
   ],
-  authors: [{ name: "zaileremont.pl" }],
-  creator: "zaileremont.pl",
-  publisher: "zaileremont.pl",
+  authors: [{ name: "ilezaremont.pl" }],
+  creator: "ilezaremont.pl",
+  publisher: "Adsales sp. z o.o.",
   openGraph: {
     type: "website",
     locale: "pl_PL",
-    url: "https://zaileremont.pl",
-    siteName: "zaileremont.pl",
-    title: "Mapa Cen Remontów | zaileremont.pl",
+    url: "https://ilezaremont.pl",
+    siteName: "ilezaremont.pl",
+    title: "Ile kosztuje remont? Mapa Cen Remontów 2026 | ilezaremont.pl",
     description:
-      "Kompleksowa analiza cen remontów i budowy w Polsce. Kalkulator kosztów, mapa cen, poradniki eksperckie.",
+      "Sprawdź ile kosztuje remont w Twoim mieście. Kalkulatory kosztów, mapa cen, poradniki eksperckie.",
     images: [
       {
-        url: "https://zaileremont.pl/og-image.png",
+        url: "https://ilezaremont.pl/og-image.png",
         width: 1200,
         height: 630,
-        alt: "zaileremont.pl - Mapa Cen Remontów",
+        alt: "ilezaremont.pl - Mapa Cen Remontów",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mapa Cen Remontów | zaileremont.pl",
+    title: "Ile kosztuje remont? | ilezaremont.pl",
     description:
-      "Kompleksowa analiza cen remontów i budowy w Polsce.",
+      "Sprawdź ile kosztuje remont w Twoim mieście. Kalkulatory i mapa cen.",
   },
   robots: {
     index: true,
     follow: true,
   },
   alternates: {
-    canonical: "https://zaileremont.pl",
+    canonical: "https://ilezaremont.pl",
   },
 };
 
@@ -64,14 +67,14 @@ export default function RootLayout({
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "zaileremont.pl",
-    "url": "https://zaileremont.pl",
-    "description": "Kompleksowa analiza cen remontów i budowy w Polsce",
+    "name": "ilezaremont.pl",
+    "url": "https://ilezaremont.pl",
+    "description": "Sprawdź ile kosztuje remont w Twoim mieście",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://zaileremont.pl/search?q={search_term_string}"
+        "urlTemplate": "https://ilezaremont.pl/mapa-cen/{search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }
@@ -97,7 +100,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );
-}
+        }
