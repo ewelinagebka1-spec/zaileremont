@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import TileCalculator from '@/components/calculators/TileCalculator';
 
 export const metadata: Metadata = {
-  title: 'Cena układania płytek za m² 2026 | Kalkulator | zaileremont.pl',
+  title: 'Cena układania płytek za m² 2026 | Kalkulator | ilezaremont.pl',
   description:
     'Darmowy kalkulator cen układania płytek. Wycena dostosowana do rodzaju płytek, rozmiaru, materiału i typu pomieszczenia. Sprawdź ile kosztuje profesjonalne układanie.',
   openGraph: {
