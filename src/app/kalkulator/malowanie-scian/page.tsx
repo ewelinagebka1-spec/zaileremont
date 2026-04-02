@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import PaintingCalculator from '@/components/calculators/PaintingCalculator';
 
 export const metadata: Metadata = {
-  title: 'Ile kosztuje malowanie ścian 2026? Kalkulator cen | zaileremont.pl',
+  title: 'Ile kosztuje malowanie ścian 2026? Kalkulator cen | ilezaremont.pl',
   description:
     'Darmowy kalkulator cen malowania ścian. Przeanalizujemy Twoje wymogi i obliczymy dokładną wycenę w oparciu o lokalizację, stan ścian i typ farby.',
   openGraph: {
