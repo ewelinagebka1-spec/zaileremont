@@ -158,7 +158,7 @@ export default function MapaCenResult({ city, serviceType }: MapaCenResultProps)
               <p className="text-2xl font-bold text-slate-900">{indexVsWarsaw}</p>
             </div>
             <div className="text-xs text-slate-500">
-              Ceny wyliczone algorytmem zaileremont.pl
+              Ceny wyliczone algorytmem ilezaremont.pl
             </div>
           </div>
         </div>
