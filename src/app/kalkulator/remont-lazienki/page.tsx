@@ -3,8 +3,8 @@ import { Metadata } from 'next';
 import BathroomCalculator from '@/components/calculators/BathroomCalculator';
 
 export const metadata: Metadata = {
-  title: 'Kalkulator kosztów remontu łazienki 2026 | zaileremont.pl',
-  description: 'Sprawdź ile kosztuje remont łazienki w Twoim mieście. Kalkulator zaileremont.pl pozwala oszacować cenę robocizny, materiałów i wyposażenia do łazienki.',
+  title: 'Kalkulator kosztów remontu łazienki 2026 | ilezaremont.pl',
+  description: 'Sprawdź ile kosztuje remont łazienki w Twoim mieście. Kalkulator ilezaremont.pl pozwala oszacować cenę robocizny, materiałów i wyposażenia do łazienki.',
   keywords: 'remont łazienki, koszt remontu, kalkulator, wycena, warszawa, kraków',
   openGraph: {
     title: 'Kalkulator kosztów remontu łazienki 2026',
@@ -53,7 +53,7 @@ export default function BathroomCalculatorPage() {
               Ile kosztuje remont łazienki w 2026?
             </h1>
             <p className="mt-4 text-xl text-slate-600">
-              Kalkulator zaileremont.pl - sprawdź cenę w Twoim mieście
+              Kalkulator ilezaremont.pl - sprawdź cenę w Twoim mieście
             </p>
           </div>
 
@@ -63,10 +63,10 @@ export default function BathroomCalculatorPage() {
               Remont łazienki to jeden z najpopularniejszych projektów remontowych w polskich domach i mieszkaniach. W 2026 roku średni koszt remontu łazienki wynosi od 8 000 do 25 000 złotych, w zależności od wielu czynników. Głównym determinantem ceny jest wielkość pomieszczenia - łazienka o powierzchni 4-6 m² to standard, lecz spotykamy też mniejsze i większe przestrzenie wymagające indywidualnego podejścia.
             </p>
             <p className="text-slate-700">
-              Kalkulator zaileremont.pl to nowoczesne narzędzie, które pozwala oszacować koszty remontu łazienki z dokładnością do килkoset złotych. Uwzględnia on czynniki takie jak: lokalizacja (współczynnik dla Warszawy to 1.25, a dla małych miast 0.90), typ rynku nieruchomości (pierwotny, wtórny, spółdzielniczy), wybrany standard materiałów (ekonomiczny, standard, premium), konieczne prace demontażowe w przypadku remontu mieszkania na rynku wtórnym, wymianę instalacji hydraulicznych i elektrycznych, rodzaj wyposażenia (wanna, prysznic, umywalka, grzejnik), oraz prace przygotowawcze (wyrównanie ścian i podłogi, hydroizolacja).
+              Kalkulator ilezaremont.pl to nowoczesne narzędzie, które pozwala oszacować koszty remontu łazienki z dokładnością do килkoset złotych. Uwzględnia on czynniki takie jak: lokalizacja (współczynnik dla Warszawy to 1.25, a dla małych miast 0.90), typ rynku nieruchomości (pierwotny, wtórny, spółdzielniczy), wybrany standard materiałów (ekonomiczny, standard, premium), konieczne prace demontażowe w przypadku remontu mieszkania na rynku wtórnym, wymianę instalacji hydraulicznych i elektrycznych, rodzaj wyposażenia (wanna, prysznic, umywalka, grzejnik), oraz prace przygotowawcze (wyrównanie ścian i podłogi, hydroizolacja).
             </p>
             <p className="text-slate-700">
-              Naszym celem jest dostarczenie przejrzystych wycen opartych na rzeczywistych danych rynkowych od wykonawców z całej Polski. Algorytm zaileremont.pl wykorzystuje wielowarstwowy model cenowy z uwzględnieniem sezonowości (wiosna i lato są droższe), złożoności prac, oraz aktualnych trendów na rynku usług remontowych. Wycena zawiera rozkład percentylowy (p10, p25, p50, p75, p90), co daje pełny obraz możliwego spektrum cen.
+              Naszym celem jest dostarczenie przejrzystych wycen opartych na rzeczywistych danych rynkowych od wykonawców z całej Polski. Algorytm ilezaremont.pl wykorzystuje wielowarstwowy model cenowy z uwzględnieniem sezonowości (wiosna i lato są droższe), złożoności prac, oraz aktualnych trendów na rynku usług remontowych. Wycena zawiera rozkład percentylowy (p10, p25, p50, p75, p90), co daje pełny obraz możliwego spektrum cen.
             </p>
           </div>
 
@@ -141,7 +141,7 @@ export default function BathroomCalculatorPage() {
             '@type': 'HowTo',
             name: 'Jak obliczyć koszt remontu łazienki',
             description:
-              'Krokowy przewodnik do kalkulacji kosztów remontu łazienki za pomocą kalkulatora zaileremont.pl',
+              'Krokowy przewodnik do kalkulacji kosztów remontu łazienki za pomocą kalkulatora ilezaremont.pl',
             step: [
               {
                 '@type': 'HowToStep',
@@ -190,11 +190,11 @@ export default function BathroomCalculatorPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Organization',
-            name: 'zaileremont.pl',
-            url: 'https://zaileremont.pl',
+            name: 'ilezaremont.pl',
+            url: 'https://ilezaremont.pl',
             description: 'Kalkulator kosztów remontów - dokładne wyceny dla Twoich projektów',
             sameAs: [
-              'https://zaileremont.pl',
+              'https://ilezaremont.pl',
             ],
           }),
         }}
