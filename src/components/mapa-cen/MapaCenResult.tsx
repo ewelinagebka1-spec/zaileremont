@@ -405,10 +405,10 @@ export default function MapaCenResult({ city, serviceType }: MapaCenResultProps)
             textDecoration: 'none',
             textAlign: 'center',
             boxShadow: '0 4px 14px rgba(0,0,0,0.15)',
-            transition: 'transform 0.15s, box-shadow 0.15s',
+            cursor: 'pointer',
+              transition: 'transform 0.15s, box-shadow 0.15s',
           }}
-          onMouseEnter={e => { (e.target as HTMLElement).style.transform = 'translateY(-2px)'; (e.target as HTMLElement).style.boxShadow = '0 6px 20px rgba(0,0,0,0.2)'; }}
-          onMouseLeave={e => { (e.target as HTMLElement).style.transform = 'translateY(0)'; (e.target as HTMLElement).style.boxShadow = '0 4px 14px rgba(0,0,0,0.15)'; }}
+          onClick={(e) => { e.preventDefault(); window.open(STRIPE_URL, '_blank', 'noopener,noreferrer'); }}
         >
           Pobierz raport
         </a>
