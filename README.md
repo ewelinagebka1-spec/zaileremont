@@ -1,4 +1,4 @@
-# zaileremont.pl — Mapa Cen Remontow
+# ilezaremont.pl — Mapa Cen Remontow
 
 Portal z kalkulatorami wycen remontow i Mapa Cen Remontow w modelu Price Map.
 
