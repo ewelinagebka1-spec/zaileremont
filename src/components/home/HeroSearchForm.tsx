@@ -31,6 +31,8 @@ const WINDOW_TYPES = [
   { value: 'dachowe', label: 'Dachowe (Velux / Fakro)' },
 ];
 
+const STRIPE_URL = 'https://buy.stripe.com/4gM3cv2Ub3cu9vv7i800000';
+
 function formatPrice(value: number): string {
   return Math.round(value).toLocaleString('pl-PL');
 }
@@ -63,79 +65,39 @@ export default function HeroSearchForm() {
 
   const handleSearch = () => {
     if (!isFormValid || !selectedCity) return;
-
     setIsLoading(true);
     setResult(null);
 
     setTimeout(() => {
       const service = SERVICES.find(s => s.value === selectedService);
       if (!service) return;
-
       const cityCoeff = selectedCity.coefficient || 1.0;
-
       let baseMin = 0, baseMedian = 0, baseMax = 0, unit = 'zł/m²';
 
       switch (selectedService) {
         case 'remont-lazienki':
-          baseMin = 2800; baseMedian = 3800; baseMax = 5200;
-          unit = 'zł/m²';
-          break;
+          baseMin = 2800; baseMedian = 3800; baseMax = 5200; unit = 'zł/m²'; break;
         case 'malowanie-scian':
-          baseMin = 18; baseMedian = 25; baseMax = 38;
-          unit = 'zł/m²';
-          break;
+          baseMin = 18; baseMedian = 25; baseMax = 38; unit = 'zł/m²'; break;
         case 'ukladanie-plytek':
-          baseMin = 85; baseMedian = 140; baseMax = 220;
-          unit = 'zł/m²';
-          break;
+          baseMin = 85; baseMedian = 140; baseMax = 220; unit = 'zł/m²'; break;
         case 'meble-na-wymiar':
           switch (furnitureType) {
-            case 'kuchnia':
-              baseMin = 1200; baseMedian = 2200; baseMax = 3800;
-              unit = 'zł/mb';
-              break;
-            case 'lazienka':
-              baseMin = 800; baseMedian = 1600; baseMax = 2800;
-              unit = 'zł/mb';
-              break;
-            case 'szafa':
-              baseMin = 900; baseMedian = 1800; baseMax = 3200;
-              unit = 'zł/mb';
-              break;
-            case 'pokoj':
-              baseMin = 700; baseMedian = 1400; baseMax = 2600;
-              unit = 'zł/mb';
-              break;
-            default:
-              baseMin = 800; baseMedian = 1600; baseMax = 3000;
-              unit = 'zł/mb';
+            case 'kuchnia': baseMin = 1200; baseMedian = 2200; baseMax = 3800; unit = 'zł/mb'; break;
+            case 'lazienka': baseMin = 800; baseMedian = 1600; baseMax = 2800; unit = 'zł/mb'; break;
+            case 'szafa': baseMin = 900; baseMedian = 1800; baseMax = 3200; unit = 'zł/mb'; break;
+            case 'pokoj': baseMin = 700; baseMedian = 1400; baseMax = 2600; unit = 'zł/mb'; break;
+            default: baseMin = 800; baseMedian = 1600; baseMax = 3000; unit = 'zł/mb';
           }
           break;
         case 'okna-pcv':
           switch (furnitureType) {
-            case '1-skrzydlowe':
-              baseMin = 450; baseMedian = 700; baseMax = 1100;
-              unit = 'zł/szt';
-              break;
-            case '2-skrzydlowe':
-              baseMin = 800; baseMedian = 1200; baseMax = 1900;
-              unit = 'zł/szt';
-              break;
-            case 'balkonowe':
-              baseMin = 1400; baseMedian = 2200; baseMax = 3500;
-              unit = 'zł/szt';
-              break;
-            case 'fix':
-              baseMin = 350; baseMedian = 550; baseMax = 900;
-              unit = 'zł/szt';
-              break;
-            case 'dachowe':
-              baseMin = 1200; baseMedian = 1800; baseMax = 2800;
-              unit = 'zł/szt';
-              break;
-            default:
-              baseMin = 700; baseMedian = 1100; baseMax = 1800;
-              unit = 'zł/szt';
+            case '1-skrzydlowe': baseMin = 450; baseMedian = 700; baseMax = 1100; unit = 'zł/szt'; break;
+            case '2-skrzydlowe': baseMin = 800; baseMedian = 1200; baseMax = 1900; unit = 'zł/szt'; break;
+            case 'balkonowe': baseMin = 1400; baseMedian = 2200; baseMax = 3500; unit = 'zł/szt'; break;
+            case 'fix': baseMin = 350; baseMedian = 550; baseMax = 900; unit = 'zł/szt'; break;
+            case 'dachowe': baseMin = 1200; baseMedian = 1800; baseMax = 2800; unit = 'zł/szt'; break;
+            default: baseMin = 700; baseMedian = 1100; baseMax = 1800; unit = 'zł/szt';
           }
           break;
       }
@@ -152,10 +114,7 @@ export default function HeroSearchForm() {
         : service.label;
 
       setResult({
-        min,
-        median,
-        max,
-        unit,
+        min, median, max, unit,
         cityName: selectedCity.name,
         serviceName,
         calcUrl: service.calcUrl,
@@ -163,7 +122,6 @@ export default function HeroSearchForm() {
         details: furnitureDetails || undefined,
         hasFile: !!uploadedFile,
       });
-
       setIsLoading(false);
     }, 1500);
   };
@@ -192,19 +150,26 @@ export default function HeroSearchForm() {
             label="Miasto"
             placeholder="Wpisz nazwę miasta..."
             value={selectedCity}
-            onChange={(city) => { setSelectedCity(city); setResult(null); }}
+            onChange={(city) => {
+              setSelectedCity(city);
+              setResult(null);
+            }}
           />
         </div>
-
         <div>
           <SelectField
             label="Usługa"
             options={SERVICES}
             value={selectedService}
-            onChange={(e) => { setSelectedService(e.target.value); setFurnitureType(''); setFurnitureDetails(''); setUploadedFile(null); setResult(null); }}
+            onChange={(e) => {
+              setSelectedService(e.target.value);
+              setFurnitureType('');
+              setFurnitureDetails('');
+              setUploadedFile(null);
+              setResult(null);
+            }}
           />
         </div>
-
         <div className="flex items-end">
           <Button
             onClick={handleSearch}
@@ -237,7 +202,6 @@ export default function HeroSearchForm() {
                 onChange={(e) => setFurnitureType(e.target.value)}
               />
             </div>
-
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1">
                 Opisz szczegóły (opcjonalnie)
@@ -368,12 +332,18 @@ export default function HeroSearchForm() {
             {/* Naglowek + przycisk */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-4">
               <div className="flex-1">
-                <h4 className="font-bold text-slate-900 text-lg">Pełny raport cenowy — 29 zł</h4>
+                <h4 className="font-bold text-slate-900 text-lg">Pełny raport cenowy — <span className="line-through text-slate-400">69 zł</span> 29 zł</h4>
                 <p className="text-sm text-slate-500 mt-0.5">10 stron analizy &middot; PDF &middot; natychmiast na e-mail</p>
               </div>
-              <button className="shrink-0 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all text-sm">
+              <a
+                href={STRIPE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => { e.preventDefault(); window.open(STRIPE_URL, '_blank', 'noopener,noreferrer'); }}
+                className="shrink-0 inline-block bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all text-sm no-underline text-center cursor-pointer"
+              >
                 Pobierz raport — 29 zł
-              </button>
+              </a>
             </div>
 
             {/* Checkpointy korzysci — 2 kolumny */}
@@ -460,7 +430,6 @@ export default function HeroSearchForm() {
               <p className="text-xs text-slate-500">Zweryfikowane ceny rynkowe</p>
             </div>
           </div>
-
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-green-50">
               <svg className="h-5 w-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -472,7 +441,6 @@ export default function HeroSearchForm() {
               <p className="text-xs text-slate-500">Model z marca 2026</p>
             </div>
           </div>
-
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-50">
               <svg className="h-5 w-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
