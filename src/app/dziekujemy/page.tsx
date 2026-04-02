@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'DziÄkujemy za zakup â ilezaremont.pl',
-  description: 'TwÃ³j raport cenowy jest gotowy do pobrania. DziÄkujemy za zaufanie!',
+  title: 'Dziękujemy za zakup — ilezaremont.pl',
+  description: 'Twój raport cenowy jest gotowy do pobrania. Dziękujemy za zaufanie!',
   robots: { index: false, follow: false },
 };
 
@@ -19,24 +19,24 @@ export default function DziekujemyPage() {
             </svg>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
-            DziÄkujemy za zakup!
+            Dziękujemy za zakup!
           </h1>
           <p className="text-lg text-slate-500">
-            PÅatnoÅÄ przebiegÅa pomyÅlnie. TwÃ³j raport cenowy jest gotowy.
+            Płatność przebiegła pomyślnie. Twój raport cenowy jest gotowy.
           </p>
         </div>
 
         {/* Download Card */}
         <div className="rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden mb-8">
           <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
-            <h2 className="text-white font-semibold text-lg">Pobierz swÃ³j raport</h2>
-            <p className="text-blue-200 text-sm">PDF Â· 10 stron analizy Â· gotowy do pobrania</p>
+            <h2 className="text-white font-semibold text-lg">Pobierz swój raport</h2>
+            <p className="text-blue-200 text-sm">PDF · 10 stron analizy · gotowy do pobrania</p>
           </div>
 
           <div className="p-6 space-y-4">
             <p className="text-sm text-slate-600">
-              Kliknij poniÅ¼szy przycisk, aby pobraÄ raport cenowy w formacie PDF.
-              Raport zostaÅ rÃ³wnieÅ¼ wysÅany na TwÃ³j adres e-mail.
+              Kliknij poniższy przycisk, aby pobrać raport cenowy w formacie PDF.
+              Raport został również wysłany na Twój adres e-mail.
             </p>
 
             <a
@@ -52,7 +52,7 @@ export default function DziekujemyPage() {
             </a>
 
             <p className="text-xs text-slate-400 text-center">
-              Link do pobrania jest waÅ¼ny przez 30 dni
+              Link do pobrania jest ważny przez 30 dni
             </p>
           </div>
         </div>
@@ -61,21 +61,21 @@ export default function DziekujemyPage() {
         <div className="rounded-xl border border-slate-100 bg-slate-50 p-6 mb-8">
           <h3 className="font-semibold text-slate-800 mb-3">Co znajdziesz w raporcie:</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            <div className="flv className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-              <span className="text-sm text-slate-700">RozkÅad cen z 5 percentylami</span>
+              <span className="text-sm text-slate-700">Rozkład cen z 5 percentylami</span>
             </div>
             <div className="flex items-center gap-2">
               <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-              <span className="text-sm text-slate-700">PorÃ³wnanie cen w 15 miastach</span>
+              <span className="text-sm text-slate-700">Porównanie cen w 15 miastach</span>
             </div>
             <div className="flex items-center gap-2">
               <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-              <span className="text-sm text-slate-700">Trend cenowy z 12 miesiÄcy</span>
+              <span className="text-sm text-slate-700">Trend cenowy z 12 miesięcy</span>
             </div>
             <div className="flex items-center gap-2">
               <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-              <span className="text-sm text-slate-700">Rozbicie: robocizna vs. materiaÅy</span>
+              <span className="text-sm text-slate-700">Rozbicie: robocizna vs. materiały</span>
             </div>
             <div className="flex items-center gap-2">
               <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
@@ -83,7 +83,7 @@ export default function DziekujemyPage() {
             </div>
             <div className="flex items-center gap-2">
               <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-              <span className="text-sm text-slate-700">WzÃ³r umowy z wykonawcÄ</span>
+              <span className="text-sm text-slate-700">Wzór umowy z wykonawcą</span>
             </div>
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function DziekujemyPage() {
           </p>
           <div className="flex justify-center gap-4">
             <Link href="/" className="text-sm font-medium text-blue-600 hover:text-blue-800">
-              &larr; Strona gÅÃ³wna
+              &larr; Strona główna
             </Link>
             <Link href="/kalkulator" className="text-sm font-medium text-blue-600 hover:text-blue-800">
               Kalkulatory &rarr;
