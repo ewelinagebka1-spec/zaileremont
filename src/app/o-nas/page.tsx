@@ -2,21 +2,21 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'O nas — zaileremont.pl | Mapa Cen Remontów',
+  title: 'O nas — ilezaremont.pl | Mapa Cen Remontów',
   description:
-    'Poznaj zaileremont.pl — pierwsze w Polsce narzędzie Price Map dla branży remontowej. Transparentne dane o cenach usług remontowych.',
+    'Poznaj ilezaremont.pl — pierwsze w Polsce narzędzie Price Map dla branży remontowej. Transparentne dane o cenach usług remontowych.',
   keywords: [
     'o nas',
-    'zaileremont.pl',
+    'ilezaremont.pl',
     'mapa cen',
     'remont',
     'ceny',
     'price map',
   ],
   openGraph: {
-    title: 'O nas — zaileremont.pl',
+    title: 'O nas — ilezaremont.pl',
     description:
-      'Poznaj zaileremont.pl — narzędzie Price Map dla branży remontowej',
+      'Poznaj ilezaremont.pl — narzędzie Price Map dla branży remontowej',
     type: 'website',
   },
 };
@@ -25,13 +25,13 @@ export default function ONasPage() {
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'zaileremont.pl',
-    url: 'https://zaileremont.pl',
+    name: 'ilezaremont.pl',
+    url: 'https://ilezaremont.pl',
     description: 'Mapa Cen Remontów — transparentne ceny usług remontowych w Polsce',
-    logo: 'https://zaileremont.pl/logo.png',
+    logo: 'https://ilezaremont.pl/logo.png',
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'kontakt@zaileremont.pl',
+      email: 'kontakt@ilezaremont.pl',
       contactType: 'Customer Service',
     },
   };
@@ -49,7 +49,7 @@ export default function ONasPage() {
         <div className="mx-auto max-w-4xl">
           <div className="text-center">
             <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl">
-              O zaileremont.pl
+              O ilezaremont.pl
             </h1>
             <p className="mt-4 text-lg text-slate-600">
               Transparentne dane o cenach remontów dla każdego Polaka
@@ -69,7 +69,7 @@ export default function ONasPage() {
 
             <div className="rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 p-8 border border-blue-200">
               <p className="text-lg text-slate-900">
-                <span className="font-semibold">zaileremont.pl</span> to pierwsze w Polsce narzędzie typu{' '}
+                <span className="font-semibold">ilezaremont.pl</span> to pierwsze w Polsce narzędzie typu{' '}
                 <span className="font-semibold">Price Map</span> dla branży remontowej.
               </p>
 
@@ -295,10 +295,10 @@ export default function ONasPage() {
                 </h3>
                 <p className="text-slate-600">
                   <a
-                    href="mailto:kontakt@zaileremont.pl"
+                    href="mailto:kontakt@ilezaremont.pl"
                     className="text-brand-blue hover:text-blue-800 font-semibold"
                   >
-                    kontakt@zaileremont.pl
+                    kontakt@ilezaremont.pl
                   </a>
                 </p>
                 <p className="mt-2 text-sm text-slate-500">
@@ -343,7 +343,7 @@ export default function ONasPage() {
               </p>
 
               <p className="mb-6 text-slate-600">
-                Dołączając do sieci zaileremont.pl:
+                Dołączając do sieci ilezaremont.pl:
               </p>
 
               <ul className="mb-6 space-y-2">
