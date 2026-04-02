@@ -19,7 +19,7 @@ export default function Header() {
               </svg>
             </div>
             <span className="text-xl font-bold tracking-tight">
-              <span className="text-blue-700">ile</span><span className="text-slate-900">remont</span><span className="text-blue-400 font-medium">.pl</span>
+              <span className="text-blue-700">ile</span><span className="text-accent-orange">za</span><span className="text-slate-900">remont</span><span className="text-blue-400 font-medium">.pl</span>
             </span>
           </Link>
 
