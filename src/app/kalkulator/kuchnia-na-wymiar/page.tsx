@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import KitchenCalculator from '@/components/calculators/KitchenCalculator';
 
 export const metadata: Metadata = {
-  title: 'Kuchnia na wymiar — cennik 2026 | Kalkulator | zaileremont.pl',
+  title: 'Kuchnia na wymiar — cennik 2026 | Kalkulator | ilezaremont.pl',
   description:
     'Ile kosztuje kuchnia na wymiar? Kalkulator cen mebli kuchennych z uwzględnieniem kształtu zabudowy, frontów, blatów, wyposażenia i AGD. Wycena dla Twojego miasta.',
   openGraph: {
