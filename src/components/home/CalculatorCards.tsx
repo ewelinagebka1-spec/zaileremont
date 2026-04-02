@@ -13,37 +13,50 @@ const CALCULATORS: CalculatorCard[] = [
   {
     id: 'okna-pcv',
     title: 'Okna PCV',
-    description: 'Ceny okien jednoskrzydłowych, dwuskrzydłowych, balkonowych i dachowych z montażem',
+    description:
+      'Ceny okien jednoskrzydłowych, dwuskrzydłowych, balkonowych i dachowych z montażem',
     icon: '🪟',
     link: '/kalkulator/okna-pcv',
   },
   {
-    id: 'kuchnia-na-wymiar',
-    title: 'Kuchnia na wymiar',
-    description: 'Pełna wycena kuchni: kształt zabudowy, fronty, blat, AGD, wyposażenie. Dodaj swój projekt!',
-    icon: '🍳',
-    link: '/kalkulator/kuchnia-na-wymiar',
+    id: 'meble-na-wymiar',
+    title: 'Meble na wymiar',
+    description:
+      'Kuchnie, szafy wnękowe, meble łazienkowe i pokojowe — wybierz rodzaj i poznaj cenę za mb',
+    icon: '🪑',
+    link: '/kalkulator/meble-na-wymiar',
   },
   {
     id: 'lazienka',
     title: 'Remont łazienki',
-    description: 'Pełny koszt remontu łazienki od wyposażenia po wykończenie',
+    description:
+      'Pełny koszt remontu łazienki od wyposażenia po wykończenie',
     icon: '🚿',
     link: '/kalkulator/remont-lazienki',
   },
   {
     id: 'malowanie',
     title: 'Malowanie ścian',
-    description: 'Szacunek kosztów malowania pomieszczeń w Twoim domu',
+    description:
+      'Szacunek kosztów malowania pomieszczeń w Twoim domu',
     icon: '🎨',
     link: '/kalkulator/malowanie-scian',
   },
   {
     id: 'plytki',
     title: 'Układanie płytek',
-    description: 'Koszty materiałów i montażu różnych typów płytek',
+    description:
+      'Koszty materiałów i montażu różnych typów płytek',
     icon: '🧱',
     link: '/kalkulator/ukladanie-plytek',
+  },
+  {
+    id: 'kuchnia-na-wymiar',
+    title: 'Kuchnia na wymiar',
+    description:
+      'Pełna wycena kuchni: kształt zabudowy, fronty, blat, AGD, wyposażenie. Dodaj swój projekt!',
+    icon: '🍳',
+    link: '/kalkulator/kuchnia-na-wymiar',
   },
 ];
 
