@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Kalkulatory kosztów remontu 2026 | zaileremont.pl',
+  title: 'Kalkulatory kosztów remontu 2026 | ilezaremont.pl',
   description:
     'Darmowe kalkulatory kosztów remontu. Sprawdź cenę malowania ścian, układania płytek, remontu łazienki, mebli na wymiar i okien PCV. Wycena dostosowana do Twojej lokalizacji.',
   openGraph: {
