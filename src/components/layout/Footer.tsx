@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="md:col-span-1">
             <div className="flex flex-col gap-2 mb-4">
               <span className="text-lg font-bold tracking-tight">
-                <span className="text-blue-700">ile</span><span className="text-slate-900">remont</span><span className="text-blue-400 font-medium">.pl</span>
+                <span className="text-blue-700">ile</span><span className="text-accent-orange">za</span><span className="text-slate-900">remont</span><span className="text-blue-400 font-medium">.pl</span>
               </span>
             </div>
             <p className="text-sm text-slate-600 mb-3">
