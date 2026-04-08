@@ -20,8 +20,9 @@ interface PriceResultProps {
   };
 }
 
-function formatPrice(price: number): string {
-  return price.toLocaleString('pl-PL', {
+function formatPrice(price: number | undefined | null): string {
+  const safePrice = typeof price === 'number' && !isNaN(price) ? price : 0;
+  return safePrice.toLocaleString('pl-PL', {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });
