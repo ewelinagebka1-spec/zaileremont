@@ -106,7 +106,7 @@ export default function PriceResult(props: PriceResultProps) {
       {/* CTA Button */}
       <a href="/kup-raport" className="block">
         <Button variant="cta" size="lg" className="w-full">
-          Pobierz pełny raport — <span className="line-through text-red-300 decoration-red-500 decoration-2 mr-1 text-lg">69,99 zł</span> <span className="text-xl font-extrabold">29,99 zł</span>
+          Sprawdź pełny raport
         </Button>
       </a>
     </div>

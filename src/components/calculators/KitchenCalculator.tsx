@@ -976,7 +976,7 @@ export default function KitchenCalculator() {
                     href={`/kup-raport?typ=kuchnia&ksztalt=${kitchenShape}&dlugosc=${breakdown.totalLengthMb}&fronty=${frontMaterial}&blat=${countertop}&miasto=${city?.slug || ''}`}
                     className="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3.5 px-6 rounded-lg transition-colors text-center shadow-lg hover:shadow-xl block"
                   >
-                    Kup raport — <span className="line-through text-white/50 decoration-red-300 decoration-2 mr-1">69,99 zł</span> <span className="text-lg font-extrabold">29,99 zł</span>
+                    Sprawdź pełny raport
                   </a>
                   <div className="text-right shrink-0">
                     <p className="text-xs text-slate-400">Średnio oszczędzasz</p>
