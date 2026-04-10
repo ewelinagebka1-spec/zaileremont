@@ -369,7 +369,7 @@ export default function HeroSearchForm() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-4">
               <div className="flex-1">
                 <h4 className="font-bold text-slate-900 text-lg">Pełny raport cenowy — 29 zł</h4>
-                <p className="text-sm text-slate-500 mt-0.5">10 stron analizy &middot; PDF &middot; natychmiast na e-mail</p>
+                <p className="text-sm text-slate-500 mt-0.5">10 stron analizy &middot; PDF &middot; dostawa w ciągu 1h na e-mail</p>
               </div>
               <button className="shrink-0 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all text-sm">
                 Pobierz raport — 29 zł

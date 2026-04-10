@@ -63,6 +63,7 @@ export default function FurnitureCalculator() {
   const [countertop, setCountertop] = useState('laminate');
   const [equipment, setEquipment] = useState<string[]>(['softclose']);
   const [city, setCity] = useState<CityData | null>(null);
+  const [customerPrice, setCustomerPrice] = useState<number | null>(null);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -189,6 +190,29 @@ export default function FurnitureCalculator() {
               value={furnitureDesc}
               onChange={e => setFurnitureDesc(e.target.value)}
             />
+          </div>
+
+          {/* Cena klienta */}
+          <div className="mt-5">
+            <label className="block text-sm font-medium text-slate-700 mb-1">
+              Twoja cena / budżet (opcjonalnie)
+            </label>
+            <p className="text-xs text-slate-500 mb-2">
+              Podaj cenę z wyceny stolarza lub swój budżet — porównamy z cenami rynkowymi
+            </p>
+            <div className="relative max-w-xs">
+              <input
+                type="number"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm text-slate-700 placeholder:text-slate-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 pr-10"
+                placeholder="np. 15000"
+                value={customerPrice ?? ''}
+                onChange={e => {
+                  const val = e.target.value;
+                  setCustomerPrice(val === '' ? null : Number(val));
+                }}
+              />
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-slate-400">zł</span>
+            </div>
           </div>
 
           {/* Upload wyceny */}
@@ -340,6 +364,29 @@ export default function FurnitureCalculator() {
             unit="zł / całość"
           />
 
+          {/* Korzyści z raportu */}
+          <Card>
+            <h4 className="font-semibold text-slate-800 mb-3">Co zyskujesz z pełnym raportem?</h4>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="rounded-lg bg-green-50 p-3">
+                <p className="text-sm font-semibold text-green-800">💰 Oszczędność 5–7 tys. zł</p>
+                <p className="text-xs text-green-700 mt-1">Znasz realne ceny — nie przepłacisz u stolarza ani w salonie.</p>
+              </div>
+              <div className="rounded-lg bg-blue-50 p-3">
+                <p className="text-sm font-semibold text-blue-800">⏱️ Oszczędność 20+ godzin</p>
+                <p className="text-xs text-blue-700 mt-1">Porównanie dostawców w jednym PDF zamiast wizyt w 5 salonach.</p>
+              </div>
+              <div className="rounded-lg bg-amber-50 p-3">
+                <p className="text-sm font-semibold text-amber-800">🛡️ Zero kosztownych błędów</p>
+                <p className="text-xs text-amber-700 mt-1">15 checkpunktów układu — unikniesz pomyłek za tysiące złotych.</p>
+              </div>
+              <div className="rounded-lg bg-purple-50 p-3">
+                <p className="text-sm font-semibold text-purple-800">🤝 Negocjujesz z wiedzą</p>
+                <p className="text-xs text-purple-700 mt-1">20-punktowa checklista — zbij cenę nawet o 15–20%.</p>
+              </div>
+            </div>
+          </Card>
+
           <Card>
             <h4 className="font-semibold text-slate-800 mb-3">Cena za metr bieżący</h4>
             <div className="grid grid-cols-3 gap-4 text-center">
@@ -358,6 +405,104 @@ export default function FurnitureCalculator() {
                 <p className="text-lg font-bold text-slate-700">{(prices.perMbMax || 0).toLocaleString('pl-PL')} zł</p>
                 <p className="text-xs text-slate-400">za mb</p>
               </div>
+            </div>
+          </Card>
+
+          {/* Porównanie z ceną klienta */}
+          {customerPrice && customerPrice > 0 && (
+            <Card>
+              <h4 className="font-semibold text-slate-800 mb-3">Porównanie z Twoją ceną</h4>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="rounded-lg bg-slate-50 p-4 text-center">
+                  <p className="text-xs text-slate-500 uppercase mb-1">Twoja cena</p>
+                  <p className="text-xl font-bold text-slate-800">{customerPrice.toLocaleString('pl-PL')} zł</p>
+                  {lengthMb > 0 && (
+                    <p className="text-xs text-slate-400 mt-1">{Math.round(customerPrice / lengthMb).toLocaleString('pl-PL')} zł/mb</p>
+                  )}
+                </div>
+                <div className="rounded-lg bg-blue-50 p-4 text-center">
+                  <p className="text-xs text-blue-500 uppercase mb-1">Cena rynkowa (mediana)</p>
+                  <p className="text-xl font-bold text-blue-700">{(prices.totalMedian || 0).toLocaleString('pl-PL')} zł</p>
+                  {lengthMb > 0 && (
+                    <p className="text-xs text-blue-400 mt-1">{(prices.perMbMedian || 0).toLocaleString('pl-PL')} zł/mb</p>
+                  )}
+                </div>
+              </div>
+              {(() => {
+                const diff = customerPrice - prices.totalMedian;
+                const pct = prices.totalMedian > 0 ? Math.round((diff / prices.totalMedian) * 100) : 0;
+                if (pct > 5) {
+                  return (
+                    <div className="mt-3 rounded-lg bg-amber-50 border border-amber-200 px-4 py-3">
+                      <p className="text-sm text-amber-800">
+                        Twoja cena jest <strong>o {pct}% wyższa</strong> niż mediana rynkowa ({diff.toLocaleString('pl-PL')} zł więcej).
+                        Warto porównać oferty innych stolarzy.
+                      </p>
+                    </div>
+                  );
+                } else if (pct < -5) {
+                  return (
+                    <div className="mt-3 rounded-lg bg-green-50 border border-green-200 px-4 py-3">
+                      <p className="text-sm text-green-800">
+                        Twoja cena jest <strong>o {Math.abs(pct)}% niższa</strong> niż mediana rynkowa ({Math.abs(diff).toLocaleString('pl-PL')} zł mniej).
+                        To dobra oferta — upewnij się, że zakres prac jest porównywalny.
+                      </p>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div className="mt-3 rounded-lg bg-blue-50 border border-blue-200 px-4 py-3">
+                      <p className="text-sm text-blue-800">
+                        Twoja cena jest <strong>zbliżona do mediany rynkowej</strong> (różnica {Math.abs(pct)}%).
+                        To uczciwa cena rynkowa.
+                      </p>
+                    </div>
+                  );
+                }
+              })()}
+            </Card>
+          )}
+
+          {/* Parametry wyceny */}
+          <Card>
+            <h4 className="font-semibold text-slate-800 mb-3">Parametry Twojej wyceny</h4>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+              <div className="flex justify-between py-1.5 border-b border-slate-100">
+                <span className="text-slate-500">Rodzaj mebli</span>
+                <span className="font-medium text-slate-700">{furnitureLabel}</span>
+              </div>
+              <div className="flex justify-between py-1.5 border-b border-slate-100">
+                <span className="text-slate-500">Długość</span>
+                <span className="font-medium text-slate-700">{lengthMb} mb</span>
+              </div>
+              <div className="flex justify-between py-1.5 border-b border-slate-100">
+                <span className="text-slate-500">Wysokość</span>
+                <span className="font-medium text-slate-700">{heightCm} cm</span>
+              </div>
+              <div className="flex justify-between py-1.5 border-b border-slate-100">
+                <span className="text-slate-500">Głębokość</span>
+                <span className="font-medium text-slate-700">{depthCm} cm</span>
+              </div>
+              <div className="flex justify-between py-1.5 border-b border-slate-100">
+                <span className="text-slate-500">Fronty</span>
+                <span className="font-medium text-slate-700">{FRONT_MATERIALS.find(f => f.value === frontMaterial)?.label}</span>
+              </div>
+              <div className="flex justify-between py-1.5 border-b border-slate-100">
+                <span className="text-slate-500">Miasto</span>
+                <span className="font-medium text-slate-700">{city?.name}</span>
+              </div>
+              {(furnitureType === 'kuchnia' || furnitureType === 'lazienka') && (
+                <div className="flex justify-between py-1.5 border-b border-slate-100">
+                  <span className="text-slate-500">Blat</span>
+                  <span className="font-medium text-slate-700">{COUNTERTOP_OPTIONS.find(c => c.value === countertop)?.label}</span>
+                </div>
+              )}
+              {equipment.length > 0 && (
+                <div className="flex justify-between py-1.5 border-b border-slate-100">
+                  <span className="text-slate-500">Wyposażenie</span>
+                  <span className="font-medium text-slate-700 text-right">{equipment.map(eq => EQUIPMENT_OPTIONS.find(e => e.id === eq)?.label).filter(Boolean).join(', ')}</span>
+                </div>
+              )}
             </div>
           </Card>
 
@@ -410,6 +555,7 @@ export default function FurnitureCalculator() {
     setStep(0);
     setFurnitureType('');
     setFurnitureDesc('');
+    setCustomerPrice(null);
     setLengthMb(3);
     setHeightCm(220);
     setDepthCm(60);

@@ -73,7 +73,7 @@ function KupRaportContent() {
               <span className="text-2xl shrink-0">⏱️</span>
               <div>
                 <p className="font-semibold text-slate-800">Oszczędność 20+ godzin</p>
-                <p className="text-sm text-slate-500">Zamiast jeździć po 5 salonach i zbierać wyceny — dostajesz porównanie w jednym PDF w 30 sekund.</p>
+                <p className="text-sm text-slate-500">Zamiast jeździć po 5 salonach i zbierać wyceny — dostajesz porównanie w jednym PDF w ciągu 1 godziny.</p>
               </div>
             </div>
             <div className="flex gap-3">
@@ -133,7 +133,7 @@ function KupRaportContent() {
             <div className="flex items-center justify-between">
               <div>
                 <span className="font-semibold text-lg">Pełny raport PDF</span>
-                <p className="text-orange-100 text-sm mt-0.5">Dostajesz na e-mail w 30 sekund</p>
+                <p className="text-orange-100 text-sm mt-0.5">Dostajesz na e-mail w ciągu 1 godziny</p>
               </div>
               <div className="text-right">
                 <span className="text-lg line-through text-white/50 decoration-red-300 decoration-2 block">69,99 zł</span>
@@ -236,7 +236,7 @@ function KupRaportContent() {
           <div className="bg-green-50 border border-green-200 rounded-xl p-4">
             <p className="text-sm font-bold text-green-800 mb-2">Z raportem za 29,99 zł:</p>
             <ul className="text-xs text-green-700 space-y-1.5">
-              <li>Porównanie 4 dostawców w 30 sekund</li>
+              <li>Porównanie 4 dostawców w jednym raporcie</li>
               <li>Znasz cenę MIN, ŚR i MAX każdego elementu</li>
               <li>Checklista negocjacyjna — zbijasz cenę</li>
               <li>15 checkpunktów — zero kosztownych błędów</li>
@@ -270,7 +270,7 @@ function KupRaportContent() {
                 <span className="font-bold text-orange-700">2</span>
               </div>
               <p className="font-medium text-slate-800">Sprawdź e-mail</p>
-              <p className="mt-0.5">Raport PDF w 30 sekund</p>
+              <p className="mt-0.5">Raport PDF w ciągu 1 godziny</p>
             </div>
             <div>
               <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-2">
@@ -286,7 +286,7 @@ function KupRaportContent() {
         <div className="flex items-center justify-center gap-6 text-xs text-slate-400">
           <div className="flex items-center gap-1">
             <span>⚡</span>
-            <span>Natychmiastowa dostawa</span>
+            <span>Dostawa w ciągu 1h</span>
           </div>
           <div className="flex items-center gap-1">
             <span>🔒</span>

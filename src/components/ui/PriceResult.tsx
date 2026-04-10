@@ -39,9 +39,9 @@ export default function PriceResult(props: PriceResultProps) {
 
   const headerTitle = props.title || (props.serviceName ? `Szacunkowy koszt ${props.serviceName}` : 'Szacunkowy koszt');
   const subtitleText = props.subtitle || (props.district
-    ? `${props.city}, ${props.district} · ${props.area} m² · rynek ${props.marketType}`
+    ? `${props.city || '—'}, ${props.district} · ${props.area ?? '—'} m² · rynek ${props.marketType || '—'}`
     : props.city
-      ? `${props.city} · ${props.area} m² · rynek ${props.marketType}`
+      ? `${props.city} · ${props.area ?? '—'} m² · rynek ${props.marketType || '—'}`
       : '');
 
 

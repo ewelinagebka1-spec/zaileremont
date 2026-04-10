@@ -329,7 +329,7 @@ export default function MapaCenResult({ city, serviceType }: MapaCenResultProps)
           </Button>
 
           <p className="text-center text-sm text-blue-100">
-            14 dni na zwrot · Natychmiastowy dostęp · PDF
+            14 dni na zwrot · Dostawa w ciągu 1h · PDF
           </p>
         </div>
       </Card>

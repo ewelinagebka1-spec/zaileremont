@@ -986,7 +986,7 @@ export default function KitchenCalculator() {
               </div>
 
               <p className="text-xs text-slate-400 text-center">
-                Raport PDF dostarczony natychmiast na e-mail. Płatność Przelewy24.
+                Raport PDF dostarczony na e-mail w ciągu 1 godziny. Płatność Przelewy24.
               </p>
             </div>
           </div>
