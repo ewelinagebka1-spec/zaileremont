@@ -473,7 +473,7 @@ export default function MapaCenResult({ city, serviceType }: MapaCenResultProps)
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', fontSize: '12px', opacity: 0.75 }}>
           <span>14 dni na zwrot</span>
           <span>·</span>
-          <span>Natychmiastowy PDF</span>
+          <span>PDF w ciągu 1h</span>
           <span>·</span>
           <span>Bezpieczna płatność</span>
         </div>
