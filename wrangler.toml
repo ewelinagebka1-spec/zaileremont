@@ -1,16 +1,3 @@
 name = "zaileremont"
-type = "javascript"
-account_id = ""
-workers_dev = true
-route = ""
-zone_id = ""
-compatibility_date = "2024-01-01"
-
-[env.production]
-route = "ilezaremont.pl/*"
-zone_id = ""
-
-[build]
-command = "npm run pages:build"
-cwd = "./"
-watch_paths = ["src/**/*.tsx", "src/**/*.ts"]
+pages_build_output_dir = "./out"
+compatibility_date = "2024-09-23"

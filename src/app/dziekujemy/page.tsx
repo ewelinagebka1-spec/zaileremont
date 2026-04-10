@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Dziękujemy za zakup — ilezaremont.pl',
-  description: 'Twój raport cenowy jest gotowy do pobrania. Dziękujemy za zaufanie!',
+  description: 'Dziękujemy za zamówienie raportu cenowego. Wyślemy go na Twój adres e-mail w ciągu 1 godziny.',
   robots: { index: false, follow: false },
 };
 
@@ -21,39 +21,54 @@ export default function DziekujemyPage() {
           <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
             Dziękujemy za zakup!
           </h1>
-          <p className="text-lg text-slate-500">
-            Płatność przebiegła pomyślnie. Twój raport cenowy jest gotowy.
+          <p className="text-lg text-slate-600">
+            Płatność przebiegła pomyślnie. Twoje zamówienie zostało przyjęte.
           </p>
         </div>
 
-        {/* Download Card */}
-        <div className="rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden mb-8">
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-4">
-            <h2 className="text-white font-semibold text-lg">Pobierz swój raport</h2>
-            <p className="text-blue-200 text-sm">PDF · 10 stron analizy · gotowy do pobrania</p>
+        {/* Status Card */}
+        <div className="rounded-2xl border border-orange-200 bg-white shadow-lg overflow-hidden mb-8">
+          <div className="bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-4">
+            <h2 className="text-white font-semibold text-lg">Raport jest w przygotowaniu</h2>
+            <p className="text-orange-100 text-sm">Wyślemy go na Twój e-mail w ciągu 1 godziny</p>
           </div>
 
           <div className="p-6 space-y-4">
-            <p className="text-sm text-slate-600">
-              Kliknij poniższy przycisk, aby pobrać raport cenowy w formacie PDF.
-              Raport został również wysłany na Twój adres e-mail.
-            </p>
+            <div className="flex items-start gap-3">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mt-0.5">
+                <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-slate-800">Płatność zaksięgowana</p>
+                <p className="text-sm text-slate-500">Potwierdzenie dostaniesz osobnym e-mailem od Stripe</p>
+              </div>
+            </div>
 
-            <a
-              href="/raport-przyklad.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-6 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all text-base no-underline text-center cursor-pointer"
-            >
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              Pobierz raport PDF
-            </a>
+            <div className="flex items-start gap-3">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mt-0.5">
+                <svg className="w-4 h-4 text-orange-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-slate-800">Raport w przygotowaniu</p>
+                <p className="text-sm text-slate-500">Nasz system generuje spersonalizowany raport dla Ciebie</p>
+              </div>
+            </div>
 
-            <p className="text-xs text-slate-400 text-center">
-              Link do pobrania jest ważny przez 30 dni
-            </p>
+            <div className="flex items-start gap-3">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center mt-0.5">
+                <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-slate-800">Raport na e-mail w ciągu 1 godziny</p>
+                <p className="text-sm text-slate-500">PDF trafi na adres e-mail podany przy płatności</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -86,6 +101,13 @@ export default function DziekujemyPage() {
               <span className="text-sm text-slate-700">Wzór umowy z wykonawcą</span>
             </div>
           </div>
+        </div>
+
+        {/* Tip */}
+        <div className="rounded-xl border border-blue-100 bg-blue-50 p-4 mb-8">
+          <p className="text-sm text-blue-900">
+            <strong>Wskazówka:</strong> sprawdź skrzynkę za około 30–60 minut. Jeśli wiadomości nie będzie — zajrzyj też do folderu <em>Oferty</em>, <em>Spam</em> lub <em>Inne</em>.
+          </p>
         </div>
 
         {/* Help section */}
