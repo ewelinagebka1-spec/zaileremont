@@ -56,8 +56,6 @@ const SERVICE_ITEMS: Record<string, string[]> = {
   ],
 };
 
-const STRIPE_URL = 'https://buy.stripe.com/4gM3cv2Ub3cu9vv7i800000';
-
 /* ── Countdown Timer ───────────────────────────────────────── */
 function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
@@ -186,33 +184,7 @@ export default function MapaCenResult({ city, serviceType }: MapaCenResultProps)
               </p>
               <p style={{ fontSize: '12px', opacity: 0.6, margin: 0 }}>zł/m²</p>
             </div>
-
-            <div className="rounded-lg border-2 border-orange-200 bg-orange-50 p-4">
-              <p className="text-xs font-semibold text-orange-700">MEDIANA</p>
-              <p className="mt-2 text-3xl font-bold text-orange-900">
-                {Math.round(result.p50)}
-              </p>
-              <p className="text-xs text-orange-700">zł/m²</p>
-            </div>
-
-            <div className="rounded-lg border-2 border-red-200 bg-red-50 p-4">
-              <p className="text-xs font-semibold text-red-700">MAX</p>
-              <p className="mt-2 text-3xl font-bold text-red-900">
-                {Math.round(result.p90)}
-              </p>
-              <p className="text-xs text-red-700">zł/m²</p>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-2 rounded-lg bg-white p-4 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p className="text-sm text-slate-600">Indeks vs. Warszawa</p>
-              <p className="text-2xl font-bold text-slate-900">{indexVsWarsaw}</p>
-            </div>
-            <div className="text-xs text-slate-500">
-              Ceny wyliczone algorytmem ilezaremont.pl
-            </div>
-          </div>
+          ))}
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '16px', padding: '12px 16px', background: 'rgba(255,255,255,0.08)', borderRadius: '8px' }}>
@@ -336,62 +308,31 @@ export default function MapaCenResult({ city, serviceType }: MapaCenResultProps)
             color: '#dc2626',
           }}>+8% r/r</span>
         </div>
-      </Card>
-
-      {/* CTA Section */}
-      <Card padding="lg" className="border-2 border-transparent bg-gradient-to-r from-blue-600 to-blue-700 text-white">
-        <div className="space-y-6">
-          <div>
-            <h3 className="text-2xl font-bold">Pobierz pełny raport cenowy</h3>
-            <p className="mt-2 text-lg font-semibold text-blue-100">29 zł</p>
-          </div>
-
-          <ul className="space-y-3">
-            <li className="flex items-start gap-3">
-              <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-blue-600">
-                <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-              </span>
-              <span>Szczegółowa analiza cen w Twoim mieście</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-blue-600">
-                <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-              </span>
-              <span>Porównanie ze wszystkimi miastami w Polsce</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-blue-600">
-                <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-              </span>
-              <span>Trendy cenowe i prognozy</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-blue-600">
-                <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-              </span>
-              <span>Kalkulatory dla każdej usługi</span>
-            </li>
-          </ul>
-
-          <Button
-            variant="primary"
-            size="lg"
-            className="w-full bg-white text-blue-600 hover:bg-blue-50"
-          >
-            Kupuję raport
-          </Button>
-
-          <p className="text-center text-sm text-blue-100">
-            14 dni na zwrot · Dostawa w ciągu 1h · PDF
-          </p>
+        <p style={{ fontSize: '13px', color: '#64748b', margin: '0 0 16px' }}>
+          Źródło: GUS — CPI dla usług budowlanych
+        </p>
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px', height: '120px' }}>
+          {[
+            { q: 'Q1 2025', h: 60 },
+            { q: 'Q2 2025', h: 68 },
+            { q: 'Q3 2025', h: 75 },
+            { q: 'Q4 2025', h: 82 },
+            { q: 'Q1 2026', h: 92 },
+          ].map((bar, i) => (
+            <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+              <div style={{
+                width: '100%',
+                maxWidth: '48px',
+                height: `${bar.h}%`,
+                borderRadius: '6px 6px 0 0',
+                background: i === 4
+                  ? 'linear-gradient(180deg, #f97316, #ea580c)'
+                  : 'linear-gradient(180deg, #93c5fd, #3b82f6)',
+                transition: 'height 0.4s ease',
+              }} />
+              <span style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 500 }}>{bar.q}</span>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -422,32 +363,15 @@ export default function MapaCenResult({ city, serviceType }: MapaCenResultProps)
         <CountdownTimer />
 
         <h3 style={{ fontSize: '24px', fontWeight: 800, margin: '20px 0 8px', lineHeight: 1.2 }}>
-          Pobierz pełny raport PDF
+          Pełny raport cenowy PDF
         </h3>
         <p style={{ fontSize: '14px', opacity: 0.85, margin: '0 0 20px', maxWidth: '400px', marginLeft: 'auto', marginRight: 'auto' }}>
           Szczegółowa analiza cen, porównanie miast, trendy i prognozy — wszystko w jednym dokumencie.
         </p>
 
-        {/* Price */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
-          <span style={{
-            fontSize: '22px',
-            fontWeight: 700,
-            textDecoration: 'line-through',
-            opacity: 0.6,
-          }}>69 zł</span>
-          <span style={{
-            fontSize: '42px',
-            fontWeight: 900,
-            lineHeight: 1,
-          }}>29 zł</span>
-        </div>
-
         {/* CTA Button */}
         <a
-          href={STRIPE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/kup-raport"
           style={{
             display: 'block',
             width: '100%',
@@ -463,11 +387,10 @@ export default function MapaCenResult({ city, serviceType }: MapaCenResultProps)
             textAlign: 'center',
             boxShadow: '0 4px 14px rgba(0,0,0,0.15)',
             cursor: 'pointer',
-              transition: 'transform 0.15s, box-shadow 0.15s',
+            transition: 'transform 0.15s, box-shadow 0.15s',
           }}
-          onClick={(e) => { e.preventDefault(); window.open(STRIPE_URL, '_blank', 'noopener,noreferrer'); }}
         >
-          Pobierz raport
+          Sprawdź pełny raport
         </a>
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', fontSize: '12px', opacity: 0.75 }}>

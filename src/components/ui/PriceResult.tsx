@@ -1,17 +1,15 @@
 'use client';
 
-import Button from './Button';
-import CountdownTimer from './CountdownTimer';
-
 interface PriceResultProps {
-  serviceName: string;
-  city: string;
+  // Wzorzec 1: z MapaCen
+  serviceName?: string;
+  city?: string;
   district?: string;
-  area: number;
-  marketType: string;
-  minPrice: number;
-  medianPrice: number;
-  maxPrice: number;
+  area?: number;
+  marketType?: string;
+  minPrice?: number;
+  medianPrice?: number;
+  maxPrice?: number;
   percentiles?: {
     p10?: number;
     p25?: number;
@@ -19,6 +17,13 @@ interface PriceResultProps {
     p75?: number;
     p90?: number;
   };
+  // Wzorzec 2: z kalkulatorów
+  title?: string;
+  subtitle?: string;
+  min?: number;
+  median?: number;
+  max?: number;
+  unit?: string;
 }
 
 function formatPrice(price: number | undefined | null): string {
@@ -36,49 +41,70 @@ export default function PriceResult(props: PriceResultProps) {
   const maxVal = props.maxPrice ?? props.max ?? 0;
   const unitText = props.unit || 'zł';
 
-  const headerTitle = props.title || (props.serviceName ? `Szacunkowy koszt ${props.serviceName}` : 'Szacunkowy koszt');
-  const subtitleText = props.subtitle || (props.district
-    ? `${props.city || '—'}, ${props.district} · ${props.area ?? '—'} m² · rynek ${props.marketType || '—'}`
-    : props.city
-      ? `${props.city} · ${props.area ?? '—'} m² · rynek ${props.marketType || '—'}`
-      : '');
+  const headerTitle =
+    props.title ||
+    (props.serviceName ? `Szacunkowy koszt ${props.serviceName}` : 'Szacunkowy koszt');
 
-  const subtitle = district
-    ? `${city}, ${district} · ${area} m² · rynek ${marketType}`
-    : `${city} · ${area} m² · rynek ${marketType}`;
+  const subtitleText =
+    props.subtitle ||
+    (props.district
+      ? `${props.city || '—'}, ${props.district} · ${props.area ?? '—'} m² · rynek ${props.marketType || '—'}`
+      : props.city
+        ? `${props.city} · ${props.area ?? '—'} m² · rynek ${props.marketType || '—'}`
+        : '');
+
+  const percentiles = props.percentiles || {
+    p10: minVal,
+    p25: minVal + (medianVal - minVal) * 0.25,
+    p50: medianVal,
+    p75: minVal + (medianVal - minVal) * 0.75,
+    p90: maxVal,
+  };
+
+  const maxValue = Math.max(maxVal, percentiles.p90 || 0) || 1;
+  const getPercentageWidth = (value: number) => (value / maxValue) * 100;
+
+  const unitSuffix = unitText.includes('zł') ? '' : 'zł';
 
   return (
     <div className="w-full rounded-lg border border-slate-200 bg-white p-8 shadow-md-card">
       <div className="mb-8">
-        <h2 className="text-xl font-bold text-slate-900">
-          Szacunkowy koszt {serviceName}
-        </h2>
-        <p className="mt-2 text-sm text-slate-600">{subtitle}</p>
+        <h2 className="text-xl font-bold text-slate-900">{headerTitle}</h2>
+        {subtitleText && <p className="mt-2 text-sm text-slate-600">{subtitleText}</p>}
       </div>
 
       <div className="mb-8 grid grid-cols-3 gap-4">
         <div className="rounded-lg bg-slate-50 p-4 text-center">
           <p className="text-xs font-medium uppercase text-slate-600">MIN</p>
           <p className="mt-2 text-2xl font-bold text-brand-blue">
-            {formatPrice(minPrice)} <span className="text-base">zł</span>
+            {formatPrice(minVal)} <span className="text-base">zł{unitSuffix}</span>
           </p>
+          {props.unit && <p className="text-xs text-slate-400 mt-1">{props.unit}</p>}
         </div>
         <div className="rounded-lg bg-blue-50 p-4 text-center">
-          <p className="text-xs font-medium uppercase text-slate-600">MEDIANA</p>
+          <p className="text-xs font-medium uppercase text-slate-600">ŚREDNIA</p>
           <p className="mt-2 text-2xl font-bold text-brand-blue">
-            {formatPrice(medianPrice)} <span className="text-base">zł</span>
+            {formatPrice(medianVal)} <span className="text-base">zł{unitSuffix}</span>
           </p>
+          {props.unit && <p className="text-xs text-slate-400 mt-1">{props.unit}</p>}
         </div>
         <div className="rounded-lg bg-slate-50 p-4 text-center">
           <p className="text-xs font-medium uppercase text-slate-600">MAX</p>
           <p className="mt-2 text-2xl font-bold text-brand-blue">
-            {formatPrice(maxPrice)} <span className="text-base">zł</span>
+            {formatPrice(maxVal)} <span className="text-base">zł{unitSuffix}</span>
           </p>
+          {props.unit && <p className="text-xs text-slate-400 mt-1">{props.unit}</p>}
         </div>
       </div>
 
       <div className="mb-8 space-y-3">
-        {[{l:'p10',v:percentiles.p10||minPrice,c:'bg-blue-200'},{l:'p25',v:percentiles.p25||minPrice,c:'bg-blue-300'},{l:'p50',v:percentiles.p50||medianPrice,c:'bg-brand-blue'},{l:'p75',v:percentiles.p75||maxPrice,c:'bg-blue-400'},{l:'p90',v:percentiles.p90||maxPrice,c:'bg-blue-500'}].map(p => (
+        {[
+          { l: 'p10', v: percentiles.p10 ?? minVal, c: 'bg-blue-200' },
+          { l: 'p25', v: percentiles.p25 ?? minVal, c: 'bg-blue-300' },
+          { l: 'p50', v: percentiles.p50 ?? medianVal, c: 'bg-brand-blue' },
+          { l: 'p75', v: percentiles.p75 ?? maxVal, c: 'bg-blue-400' },
+          { l: 'p90', v: percentiles.p90 ?? maxVal, c: 'bg-blue-500' },
+        ].map((p) => (
           <div key={p.l} className="space-y-1">
             <div className="flex items-end justify-between">
               <span className="text-xs font-medium text-slate-600">{p.l}</span>
@@ -100,14 +126,11 @@ export default function PriceResult(props: PriceResultProps) {
         </p>
       </div>
 
-      {/* Countdown */}
-      <CountdownTimer className="mb-4" />
-
-      {/* CTA Button */}
-      <a href="/kup-raport" className="block">
-        <Button variant="cta" size="lg" className="w-full">
-          Sprawdź pełny raport
-        </Button>
+      <a
+        href="/kup-raport"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-accent-orange to-orange-600 px-6 py-3 text-lg font-semibold text-white transition-all duration-200 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent-orange focus:ring-offset-2"
+      >
+        Sprawdź pełny raport
       </a>
     </div>
   );
