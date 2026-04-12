@@ -93,39 +93,6 @@ function KupRaportContent() {
           </div>
         </div>
 
-        {/* Podgląd raportu — klikalny do płatności */}
-        <a href={stripeUrl} className="block mb-6 group">
-          <div className="bg-white rounded-xl border border-slate-200 shadow-md overflow-hidden hover:border-orange-300 hover:shadow-lg transition-all cursor-pointer">
-            <div className="bg-slate-800 text-white px-6 py-3 flex items-center justify-between">
-              <span className="text-sm font-medium">Podgląd przykładowego raportu</span>
-              <span className="text-xs text-orange-300 group-hover:text-orange-200 font-medium">
-                Kup teraz za 29,99 zł →
-              </span>
-            </div>
-            <div className="p-4 bg-slate-50">
-              <div className="grid grid-cols-3 gap-3 text-center text-xs">
-                <div className="bg-white rounded-lg border border-slate-200 p-3 group-hover:border-orange-200 transition-colors">
-                  <p className="text-slate-400 uppercase font-medium mb-1">Strona 1</p>
-                  <p className="font-semibold text-slate-700">Rozkład cen MIN / MED / MAX</p>
-                  <p className="text-slate-400 mt-1">Ceny w 15 miastach</p>
-                </div>
-                <div className="bg-white rounded-lg border border-slate-200 p-3 group-hover:border-orange-200 transition-colors">
-                  <p className="text-slate-400 uppercase font-medium mb-1">Strona 3</p>
-                  <p className="font-semibold text-slate-700">Porównanie dostawców</p>
-                  <p className="text-slate-400 mt-1">IKEA, Agata, Castorama, stolarz</p>
-                </div>
-                <div className="bg-white rounded-lg border border-slate-200 p-3 group-hover:border-orange-200 transition-colors">
-                  <p className="text-slate-400 uppercase font-medium mb-1">Strona 5</p>
-                  <p className="font-semibold text-slate-700">Checklista negocjacyjna</p>
-                  <p className="text-slate-400 mt-1">20 punktów do sprawdzenia</p>
-                </div>
-              </div>
-              <p className="text-center text-sm text-orange-600 group-hover:text-orange-700 font-semibold mt-3">
-                Kup pełny raport (7 stron) — <span className="line-through text-slate-400 decoration-red-400 decoration-2">69,99 zł</span> <span className="text-orange-700 text-base font-extrabold">29,99 zł</span> →
-              </p>
-            </div>
-          </div>
-        </a>
 
         {/* Karta produktu z płatnością */}
         <div className="bg-white rounded-xl border-2 border-orange-200 shadow-lg overflow-hidden mb-8">
