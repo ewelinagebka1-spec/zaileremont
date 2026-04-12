@@ -178,7 +178,7 @@ function KupRaportContent() {
             {/* Button Stripe */}
             <a
               href={stripeUrl}
-              className="block w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-lg transition-colors text-center shadow-lg hover:shadow-xl text-lg"
+              className="block w-full bg-white hover:bg-orange-50 text-orange-600 font-bold py-4 px-6 rounded-lg transition-colors text-center shadow-lg hover:shadow-xl text-lg border-2 border-orange-300"
             >
               Kupuję raport — <span className="line-through text-white/50 decoration-red-300 decoration-2 mr-1">69,99 zł</span> <span className="text-xl font-extrabold">29,99 zł</span>
             </a>
