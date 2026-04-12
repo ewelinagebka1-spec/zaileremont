@@ -8,25 +8,25 @@ import Button from '@/components/ui/Button';
 import { CityData } from '@/data/cities';
 
 const SERVICES = [
-  { value: 'remont-lazienki', label: 'Remont łazienki', calcUrl: '/kalkulator/remont-lazienki' },
-  { value: 'malowanie-scian', label: 'Malowanie ścian', calcUrl: '/kalkulator/malowanie-scian' },
-  { value: 'ukladanie-plytek', label: 'Układanie płytek', calcUrl: '/kalkulator/ukladanie-plytek' },
+  { value: 'remont-lazienki', label: 'Remont Åazienki', calcUrl: '/kalkulator/remont-lazienki' },
+  { value: 'malowanie-scian', label: 'Malowanie Åcian', calcUrl: '/kalkulator/malowanie-scian' },
+  { value: 'ukladanie-plytek', label: 'UkÅadanie pÅytek', calcUrl: '/kalkulator/ukladanie-plytek' },
   { value: 'meble-na-wymiar', label: 'Meble na wymiar', calcUrl: '/kalkulator/meble-na-wymiar' },
   { value: 'okna-pcv', label: 'Okna PCV', calcUrl: '/kalkulator/okna-pcv' },
 ];
 
 const FURNITURE_TYPES = [
   { value: 'kuchnia', label: 'Meble kuchenne' },
-  { value: 'lazienka', label: 'Meble łazienkowe' },
-  { value: 'szafa', label: 'Szafa wnękowa / garderoba' },
-  { value: 'pokoj', label: 'Meble pokojowe (regały, komody)' },
+  { value: 'lazienka', label: 'Meble Åazienkowe' },
+  { value: 'szafa', label: 'Szafa wnÄkowa / garderoba' },
+  { value: 'pokoj', label: 'Meble pokojowe (regaÅy, komody)' },
   { value: 'inne', label: 'Inne meble na wymiar' },
 ];
 
 const WINDOW_TYPES = [
-  { value: '1-skrzydlowe', label: 'Jednoskrzydłowe (np. 60×120)' },
-  { value: '2-skrzydlowe', label: 'Dwuskrzydłowe (np. 150×150)' },
-  { value: 'balkonowe', label: 'Balkonowe / tarasowe (np. 200×230)' },
+  { value: '1-skrzydlowe', label: 'JednoskrzydÅowe (np. 60Ã120)' },
+  { value: '2-skrzydlowe', label: 'DwuskrzydÅowe (np. 150Ã150)' },
+  { value: 'balkonowe', label: 'Balkonowe / tarasowe (np. 200Ã230)' },
   { value: 'fix', label: 'Fix (nieotwierane)' },
   { value: 'dachowe', label: 'Dachowe (Velux / Fakro)' },
 ];
@@ -72,32 +72,32 @@ export default function HeroSearchForm() {
       const service = SERVICES.find(s => s.value === selectedService);
       if (!service) return;
       const cityCoeff = selectedCity.coefficient || 1.0;
-      let baseMin = 0, baseMedian = 0, baseMax = 0, unit = 'zł/m²';
+      let baseMin = 0, baseMedian = 0, baseMax = 0, unit = 'zÅ/mÂ²';
 
       switch (selectedService) {
         case 'remont-lazienki':
-          baseMin = 2800; baseMedian = 3800; baseMax = 5200; unit = 'zł/m²'; break;
+          baseMin = 2800; baseMedian = 3800; baseMax = 5200; unit = 'zÅ/mÂ²'; break;
         case 'malowanie-scian':
-          baseMin = 18; baseMedian = 25; baseMax = 38; unit = 'zł/m²'; break;
+          baseMin = 18; baseMedian = 25; baseMax = 38; unit = 'zÅ/mÂ²'; break;
         case 'ukladanie-plytek':
-          baseMin = 85; baseMedian = 140; baseMax = 220; unit = 'zł/m²'; break;
+          baseMin = 85; baseMedian = 140; baseMax = 220; unit = 'zÅ/mÂ²'; break;
         case 'meble-na-wymiar':
           switch (furnitureType) {
-            case 'kuchnia': baseMin = 1200; baseMedian = 2200; baseMax = 3800; unit = 'zł/mb'; break;
-            case 'lazienka': baseMin = 800; baseMedian = 1600; baseMax = 2800; unit = 'zł/mb'; break;
-            case 'szafa': baseMin = 900; baseMedian = 1800; baseMax = 3200; unit = 'zł/mb'; break;
-            case 'pokoj': baseMin = 700; baseMedian = 1400; baseMax = 2600; unit = 'zł/mb'; break;
-            default: baseMin = 800; baseMedian = 1600; baseMax = 3000; unit = 'zł/mb';
+            case 'kuchnia': baseMin = 1200; baseMedian = 2200; baseMax = 3800; unit = 'zÅ/mb'; break;
+            case 'lazienka': baseMin = 800; baseMedian = 1600; baseMax = 2800; unit = 'zÅ/mb'; break;
+            case 'szafa': baseMin = 900; baseMedian = 1800; baseMax = 3200; unit = 'zÅ/mb'; break;
+            case 'pokoj': baseMin = 700; baseMedian = 1400; baseMax = 2600; unit = 'zÅ/mb'; break;
+            default: baseMin = 800; baseMedian = 1600; baseMax = 3000; unit = 'zÅ/mb';
           }
           break;
         case 'okna-pcv':
           switch (furnitureType) {
-            case '1-skrzydlowe': baseMin = 450; baseMedian = 700; baseMax = 1100; unit = 'zł/szt'; break;
-            case '2-skrzydlowe': baseMin = 800; baseMedian = 1200; baseMax = 1900; unit = 'zł/szt'; break;
-            case 'balkonowe': baseMin = 1400; baseMedian = 2200; baseMax = 3500; unit = 'zł/szt'; break;
-            case 'fix': baseMin = 350; baseMedian = 550; baseMax = 900; unit = 'zł/szt'; break;
-            case 'dachowe': baseMin = 1200; baseMedian = 1800; baseMax = 2800; unit = 'zł/szt'; break;
-            default: baseMin = 700; baseMedian = 1100; baseMax = 1800; unit = 'zł/szt';
+            case '1-skrzydlowe': baseMin = 450; baseMedian = 700; baseMax = 1100; unit = 'zÅ/szt'; break;
+            case '2-skrzydlowe': baseMin = 800; baseMedian = 1200; baseMax = 1900; unit = 'zÅ/szt'; break;
+            case 'balkonowe': baseMin = 1400; baseMedian = 2200; baseMax = 3500; unit = 'zÅ/szt'; break;
+            case 'fix': baseMin = 350; baseMedian = 550; baseMax = 900; unit = 'zÅ/szt'; break;
+            case 'dachowe': baseMin = 1200; baseMedian = 1800; baseMax = 2800; unit = 'zÅ/szt'; break;
+            default: baseMin = 700; baseMedian = 1100; baseMax = 1800; unit = 'zÅ/szt';
           }
           break;
       }
@@ -110,7 +110,7 @@ export default function HeroSearchForm() {
       const subTypes = isWindows ? WINDOW_TYPES : FURNITURE_TYPES;
       const subLabel = subTypes.find(ft => ft.value === furnitureType)?.label;
       const serviceName = (isFurniture || isWindows) && subLabel
-        ? `${service.label} — ${subLabel}`
+        ? `${service.label} â ${subLabel}`
         : service.label;
 
       setResult({
@@ -148,7 +148,7 @@ export default function HeroSearchForm() {
         <div>
           <CityAutocomplete
             label="Miasto"
-            placeholder="Wpisz nazwę miasta..."
+            placeholder="Wpisz nazwÄ miasta..."
             value={selectedCity}
             onChange={(city) => {
               setSelectedCity(city);
@@ -158,7 +158,7 @@ export default function HeroSearchForm() {
         </div>
         <div>
           <SelectField
-            label="Usługa"
+            label="UsÅuga"
             options={SERVICES}
             value={selectedService}
             onChange={(e) => {
@@ -178,7 +178,7 @@ export default function HeroSearchForm() {
             size="md"
             className="w-full"
           >
-            {isLoading ? 'Analizuję dane...' : 'Sprawdź cenę'}
+            {isLoading ? 'AnalizujÄ dane...' : 'SprawdÅº cenÄ'}
           </Button>
         </div>
       </div>
@@ -190,7 +190,7 @@ export default function HeroSearchForm() {
             <svg className="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
-            <h4 className="font-semibold text-slate-800">Doprecyzuj zamówienie</h4>
+            <h4 className="font-semibold text-slate-800">Doprecyzuj zamÃ³wienie</h4>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
@@ -204,14 +204,14 @@ export default function HeroSearchForm() {
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1">
-                Opisz szczegóły (opcjonalnie)
+                Opisz szczegÃ³Åy (opcjonalnie)
               </label>
               <input
                 type="text"
                 className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-700 placeholder:text-slate-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                 placeholder={isWindows
-                  ? 'np. 5 okien, białe, trzyszybowe, z roletami...'
-                  : 'np. kuchnia 3m, biały mat, blat kwarcowy...'}
+                  ? 'np. 5 okien, biaÅe, trzyszybowe, z roletami...'
+                  : 'np. kuchnia 3m, biaÅy mat, blat kwarcowy...'}
                 value={furnitureDetails}
                 onChange={(e) => setFurnitureDetails(e.target.value)}
               />
@@ -223,9 +223,9 @@ export default function HeroSearchForm() {
             <div className="flex items-center gap-3">
               <div className="flex-1">
                 <p className="text-sm font-medium text-slate-700">
-                  {isWindows ? 'Masz wycenę od producenta okien?' : 'Masz wycenę od stolarza?'}
+                  {isWindows ? 'Masz wycenÄ od producenta okien?' : 'Masz wycenÄ od stolarza?'}
                 </p>
-                <p className="text-xs text-slate-500">Dodaj plik (PDF, JPG, PNG) — porównamy z cenami rynkowymi</p>
+                <p className="text-xs text-slate-500">Dodaj plik (PDF, JPG, PNG) â porÃ³wnamy z cenami rynkowymi</p>
               </div>
               <input
                 ref={fileInputRef}
@@ -243,7 +243,7 @@ export default function HeroSearchForm() {
                   <button
                     onClick={() => { setUploadedFile(null); if (fileInputRef.current) fileInputRef.current.value = ''; }}
                     className="text-xs text-slate-400 hover:text-slate-600"
-                  >✕</button>
+                  >â</button>
                 </div>
               ) : (
                 <button
@@ -251,7 +251,7 @@ export default function HeroSearchForm() {
                   className="text-sm font-medium text-blue-600 bg-white border border-blue-200 hover:bg-blue-50 px-4 py-2 rounded-lg transition-colors flex items-center gap-1.5"
                 >
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
-                  Dodaj wycenę
+                  Dodaj wycenÄ
                 </button>
               )}
             </div>
@@ -268,13 +268,13 @@ export default function HeroSearchForm() {
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
             </svg>
             <span className="text-sm font-medium text-blue-700">
-              Analizuję dane rynkowe dla {selectedCity?.name}...
+              AnalizujÄ dane rynkowe dla {selectedCity?.name}...
             </span>
           </div>
         </div>
       )}
 
-      {/* RESULT — ceny + CTA do raportu */}
+      {/* RESULT â ceny + CTA do raportu */}
       {result && !isLoading && (
         <div className="rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden animate-fade-in">
           {/* Header wyniku */}
@@ -290,7 +290,7 @@ export default function HeroSearchForm() {
             </div>
           </div>
 
-          {/* Info o szczegółach i pliku */}
+          {/* Info o szczegÃ³Åach i pliku */}
           {(result.details || result.hasFile) && (
             <div className="bg-slate-50 px-6 py-2.5 border-b border-slate-100 flex flex-wrap items-center gap-3">
               {result.details && (
@@ -302,7 +302,7 @@ export default function HeroSearchForm() {
               {result.hasFile && (
                 <span className="text-xs text-green-600 bg-green-50 border border-green-100 px-2 py-0.5 rounded flex items-center gap-1">
                   <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-                  Wycena załączona — porównamy w raporcie
+                  Wycena zaÅÄczona â porÃ³wnamy w raporcie
                 </span>
               )}
             </div>
@@ -327,13 +327,13 @@ export default function HeroSearchForm() {
             </div>
           </div>
 
-          {/* CTA do raportu — glowna sekcja konwersji */}
+          {/* CTA do raportu â glowna sekcja konwersji */}
           <div className="bg-gradient-to-r from-orange-50 to-amber-50 border-t border-orange-100 p-6">
             {/* Naglowek + przycisk */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-4">
               <div className="flex-1">
-                <h4 className="font-bold text-slate-900 text-lg">Pełny raport cenowy — 29 zł</h4>
-                <p className="text-sm text-slate-500 mt-0.5">10 stron analizy &middot; PDF &middot; dostawa w ciągu 1h na e-mail</p>
+                <h4 className="font-bold text-slate-900 text-lg">PeÅny raport cenowy â 29 zÅ</h4>
+                <p className="text-sm text-slate-500 mt-0.5">10 stron analizy &middot; PDF &middot; dostawa w ciÄgu 1h na e-mail</p>
               </div>
               <a
                 href={STRIPE_URL}
@@ -342,27 +342,27 @@ export default function HeroSearchForm() {
                 onClick={(e) => { e.preventDefault(); window.open(STRIPE_URL, '_blank', 'noopener,noreferrer'); }}
                 className="shrink-0 inline-block bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all text-sm no-underline text-center cursor-pointer"
               >
-                Pobierz raport — 29 zł
+                Pobierz raport â 29 zÅ
               </a>
             </div>
 
-            {/* Checkpointy korzysci — 2 kolumny */}
+            {/* Checkpointy korzysci â 2 kolumny */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 mb-4">
               <div className="flex items-center gap-2">
                 <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-                <span className="text-sm text-slate-700">Rozkład cen z 5 percentylami</span>
+                <span className="text-sm text-slate-700">RozkÅad cen z 5 percentylami</span>
               </div>
               <div className="flex items-center gap-2">
                 <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-                <span className="text-sm text-slate-700">Porównanie cen w 15 miastach</span>
+                <span className="text-sm text-slate-700">PorÃ³wnanie cen w 15 miastach</span>
               </div>
               <div className="flex items-center gap-2">
                 <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-                <span className="text-sm text-slate-700">Trend cenowy z 12 miesięcy</span>
+                <span className="text-sm text-slate-700">Trend cenowy z 12 miesiÄcy</span>
               </div>
               <div className="flex items-center gap-2">
                 <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-                <span className="text-sm text-slate-700">Rozbicie: robocizna vs. materiały</span>
+                <span className="text-sm text-slate-700">Rozbicie: robocizna vs. materiaÅy</span>
               </div>
               <div className="flex items-center gap-2">
                 <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
@@ -370,43 +370,34 @@ export default function HeroSearchForm() {
               </div>
               <div className="flex items-center gap-2">
                 <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-                <span className="text-sm text-slate-700">Wzór umowy z wykonawcą</span>
+                <span className="text-sm text-slate-700">WzÃ³r umowy z wykonawcÄ</span>
               </div>
               <div className="flex items-center gap-2">
                 <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-                <span className="text-sm text-slate-700">Protokół odbioru prac</span>
+                <span className="text-sm text-slate-700">ProtokÃ³Å odbioru prac</span>
               </div>
               <div className="flex items-center gap-2">
                 <svg className="h-4 w-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
-                <span className="text-sm text-slate-700">Czynniki wpływające na cenę</span>
+                <span className="text-sm text-slate-700">Czynniki wpÅywajÄce na cenÄ</span>
               </div>
             </div>
 
-            {/* Podglad przykladu — maly link, nie rozprasza */}
+            {/* Podglad przykladu â maly link, nie rozprasza */}
             <div className="flex items-center justify-between">
               <p className="text-[11px] text-slate-400">
-                14 dni na zwrot &middot; Płatność BLIK, karta, przelew
+                14 dni na zwrot &middot; PÅatnoÅÄ BLIK, karta, przelew
               </p>
-              <a
-                href="/raport-przyklad.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-medium text-blue-600 hover:text-blue-800 flex items-center gap-1"
-              >
-                <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                Zobacz przykład raportu
-              </a>
             </div>
           </div>
 
           {/* Footer z linkami */}
           <div className="bg-slate-50 px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 border-t border-slate-100">
             <p className="text-[11px] text-slate-400">
-              Ceny wyliczone algorytmem ilezaremont.pl na podstawie danych od wykonawców
+              Ceny wyliczone algorytmem ilezaremont.pl na podstawie danych od wykonawcÃ³w
             </p>
             <div className="flex gap-3">
               <Link href={result.calcUrl} className="text-xs font-medium text-blue-600 hover:text-blue-800">
-                Szczegółowy kalkulator &rarr;
+                SzczegÃ³Åowy kalkulator &rarr;
               </Link>
               <button onClick={handleReset} className="text-xs font-medium text-slate-500 hover:text-slate-700">
                 Nowe wyszukiwanie
@@ -416,7 +407,7 @@ export default function HeroSearchForm() {
         </div>
       )}
 
-      {/* Trust Badges — only when no result */}
+      {/* Trust Badges â only when no result */}
       {!result && !isLoading && (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <div className="flex items-center gap-3">
@@ -426,7 +417,7 @@ export default function HeroSearchForm() {
               </svg>
             </div>
             <div>
-              <p className="text-sm font-semibold text-slate-900">Dane od wykonawców</p>
+              <p className="text-sm font-semibold text-slate-900">Dane od wykonawcÃ³w</p>
               <p className="text-xs text-slate-500">Zweryfikowane ceny rynkowe</p>
             </div>
           </div>
