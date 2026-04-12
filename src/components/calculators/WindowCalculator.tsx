@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import SelectField from '@/components/ui/SelectField';
@@ -60,6 +60,23 @@ export default function WindowCalculator() {
   const [windowDetails, setWindowDetails] = useState('');
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+
+  // Sync step with URL for pixel tracking
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('krok', String(step + 1));
+    window.history.replaceState({}, '', url.toString());
+  }, [step]);
+
+  // Initialize step from URL on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const krok = params.get('krok');
+    if (krok) {
+      const parsed = parseInt(krok, 10) - 1;
+      if (parsed >= 0 && parsed <= 5) setStep(parsed);
+    }
+  }, []);
 
   const canNext = () => {
     switch (step) {
