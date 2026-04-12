@@ -73,7 +73,7 @@ function KupRaportContent() {
       {src: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=400&h=400&fit=crop', alt: 'Piękne wykończenie wnętrza'},
     ],
       szafa: [
-      { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800', alt: 'Szafa wnękowa' },
+      { src: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800', alt: 'Szafa wnękowa' },
       { src: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=800', alt: 'Garderoba na wymiar' },
       { src: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800', alt: 'Szafa przesuwna' },
     ],
