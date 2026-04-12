@@ -28,6 +28,51 @@ function KupRaportContent() {
     remont: 'Raport cenowy',
   };
 
+  const headingMap: Record<string, string> = {
+    kuchnia: 'Nie przepłacaj za kuchnię marzeń',
+    lazienka: 'Nie przepłacaj za łazienkę marzeń',
+    malowanie: 'Nie przepłacaj za malowanie',
+    plytki: 'Nie przepłacaj za układanie płytek',
+    okna: 'Nie przepłacaj za wymianę okien',
+    remont: 'Nie przepłacaj za remont',
+  };
+
+  const imageMap: Record<string, {src: string, alt: string}[]> = {
+    kuchnia: [
+      {src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop', alt: 'Nowoczesna kuchnia'},
+      {src: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=400&h=400&fit=crop', alt: 'Jasna kuchnia z drewnianymi szafkami'},
+      {src: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=400&h=400&fit=crop', alt: 'Rodzina gotująca w kuchni'},
+    ],
+    lazienka: [
+      {src: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop', alt: 'Nowoczesna łazienka'},
+      {src: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=400&h=400&fit=crop', alt: 'Elegancka łazienka z prysznicem'},
+      {src: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=400&fit=crop', alt: 'Jasna łazienka z wanną'},
+    ],
+    malowanie: [
+      {src: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=600&h=400&fit=crop', alt: 'Malowanie ścian'},
+      {src: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=400&fit=crop', alt: 'Kolorowe ściany w mieszkaniu'},
+      {src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=400&fit=crop', alt: 'Profesjonalne malowanie'},
+    ],
+    plytki: [
+      {src: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600&h=400&fit=crop', alt: 'Piękne płytki ceramiczne'},
+      {src: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&h=400&fit=crop', alt: 'Układanie płytek'},
+      {src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=400&fit=crop', alt: 'Nowoczesna podłoga'},
+    ],
+    okna: [
+      {src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop', alt: 'Nowoczesne okna PCV'},
+      {src: 'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=400&h=400&fit=crop', alt: 'Jasne okna w salonie'},
+      {src: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&h=400&fit=crop', alt: 'Duże okna z widokiem'},
+    ],
+    remont: [
+      {src: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=400&fit=crop', alt: 'Remont mieszkania'},
+      {src: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=400&fit=crop', alt: 'Nowoczesne wnętrze po remoncie'},
+      {src: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=400&h=400&fit=crop', alt: 'Piękne wykończenie wnętrza'},
+    ],
+  };
+
+  const images = imageMap[typ] || imageMap.remont;
+  const heading = headingMap[typ] || headingMap.remont;
+
   const title = titleMap[typ] || titleMap['remont'];
 
   const stripeUrl = `https://buy.stripe.com/4gM3cv2Ub3cu9vv7i800000`;
@@ -38,27 +83,13 @@ function KupRaportContent() {
         {/* Hero z inspiracją */}
         <div className="relative rounded-2xl overflow-hidden mb-8 shadow-lg">
           <div className="grid grid-cols-3 h-52">
-            <img
-              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=350&fit=crop&q=80"
-              alt="Piękna nowoczesna kuchnia"
-              className="w-full h-full object-cover"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=400&h=350&fit=crop&q=80"
-              alt="Jasna kuchnia z drewnianymi szafkami"
-              className="w-full h-full object-cover"
-            />
-            <img
-              src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=400&h=350&fit=crop&q=80"
-              alt="Rodzina gotująca razem w kuchni"
-              className="w-full h-full object-cover"
-            />
+            <img src={images[0].src} alt={images[0].alt} className="w-full h-full object-cover" />
+            <img src={images[1].src} alt={images[1].alt} className="w-full h-full object-cover" />
+            <img src={images[2].src} alt={images[2].alt} className="w-full h-full object-cover" />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-6 text-white text-center">
-            <h1 className="text-3xl font-bold mb-1">
-              Nie przepłacaj za kuchnię marzeń
-            </h1>
+            <h1 className="text-3xl font-bold mb-1">{heading}</h1>
             <p className="text-white/80 text-lg">
               {title}{miasto ? ` — ${miasto}` : ''}{ksztalt ? ` (${ksztalt}` : ''}{dlugosc ? `, ${dlugosc} mb)` : ksztalt ? ')' : ''}
             </p>
