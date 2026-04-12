@@ -49,23 +49,23 @@ export default function CountdownTimer({ className = '' }: CountdownTimerProps) 
 
   return (
     <div className={`flex items-center justify-center gap-2 ${className}`}>
-      <span className="text-red-600 font-bold text-sm animate-pulse">🔥 Promocja kończy się za:</span>
+      <span className="text-white font-bold text-sm animate-pulse">🔥 Promocja kończy się za:</span>
       <div className="flex items-center gap-1">
         <div className="bg-red-600 text-white rounded-md px-2 py-1 text-center min-w-[2.5rem]">
           <span className="text-lg font-bold leading-none">{pad(timeLeft.days)}</span>
           <span className="block text-[9px] uppercase tracking-wider opacity-80">dni</span>
         </div>
-        <span className="text-red-600 font-bold text-lg">:</span>
+        <span className="text-white font-bold text-lg">:</span>
         <div className="bg-red-600 text-white rounded-md px-2 py-1 text-center min-w-[2.5rem]">
           <span className="text-lg font-bold leading-none">{pad(timeLeft.hours)}</span>
           <span className="block text-[9px] uppercase tracking-wider opacity-80">godz</span>
         </div>
-        <span className="text-red-600 font-bold text-lg">:</span>
+        <span className="text-white font-bold text-lg">:</span>
         <div className="bg-red-600 text-white rounded-md px-2 py-1 text-center min-w-[2.5rem]">
           <span className="text-lg font-bold leading-none">{pad(timeLeft.minutes)}</span>
           <span className="block text-[9px] uppercase tracking-wider opacity-80">min</span>
         </div>
-        <span className="text-red-600 font-bold text-lg">:</span>
+        <span className="text-white font-bold text-lg">:</span>
         <div className="bg-red-600 text-white rounded-md px-2 py-1 text-center min-w-[2.5rem]">
           <span className="text-lg font-bold leading-none">{pad(timeLeft.seconds)}</span>
           <span className="block text-[9px] uppercase tracking-wider opacity-80">sek</span>
