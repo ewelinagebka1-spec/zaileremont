@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,15 +12,13 @@ export default function Header() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center" aria-label="ilezaremont.pl - Mapa Cen Remontów">
-            <Image
-              src="/images/logo@2x.png"
-              alt="ilezaremont.pl - Mapa Cen Remontów"
-              width={239}
-              height={192}
-              priority
-              className="h-11 w-auto md:h-12"
-            />
+          <Link href="/" className="flex flex-col leading-tight" aria-label="ilezaremont.pl - Mapa Cen Remontów">
+            <span className="text-2xl md:text-3xl font-extrabold tracking-tight">
+              <span className="text-brand-blue">ile</span><span className="text-accent-orange">za</span><span className="text-brand-green">remont</span><span className="text-slate-500">.pl</span>
+            </span>
+            <span className="text-[10px] md:text-xs font-semibold uppercase tracking-widest text-slate-500 mt-0.5">
+              Mapa Cen Remontów
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
