@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import PurchaseTracker from '@/components/analytics/PurchaseTracker';
 
 export const metadata: Metadata = {
   title: 'Dziękujemy za zakup — ilezaremont.pl',
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 export default function DziekujemyPage() {
   return (
     <section className="py-16 md:py-24">
+      <PurchaseTracker value={29.99} currency="PLN" />
       <div className="container mx-auto max-w-2xl px-4">
         {/* Success Icon */}
         <div className="text-center mb-8">

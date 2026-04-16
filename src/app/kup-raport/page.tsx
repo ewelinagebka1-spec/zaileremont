@@ -11,12 +11,37 @@ function KupRaportContent() {
   const ksztalt = searchParams.get('ksztalt') || '';
   const dlugosc = searchParams.get('dlugosc') || '';
 
-  // URL step tracking for pixel integration
+  // URL step tracking + Meta Pixel ViewContent
   useEffect(() => {
     const url = new URL(window.location.href);
     url.searchParams.set('krok', 'zakup');
     window.history.replaceState({}, "", url.toString());
-  }, []);
+
+    // Meta Pixel: ViewContent on product page load
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'ViewContent', {
+        content_name: 'Raport cenowy remontu',
+        content_category: typ,
+        content_ids: [typ],
+        content_type: 'product',
+        value: 29.99,
+        currency: 'PLN',
+      });
+    }
+  }, [typ]);
+
+  const handleCheckoutClick = () => {
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'InitiateCheckout', {
+        content_name: 'Raport cenowy remontu',
+        content_category: typ,
+        content_ids: [typ],
+        value: 29.99,
+        currency: 'PLN',
+        num_items: 1,
+      });
+    }
+  };
   const [email, setEmail] = useState('');
 
   const titleMap: Record<string, string> = {
@@ -223,6 +248,7 @@ function KupRaportContent() {
             {/* Button Stripe */}
             <a
               href={stripeUrl}
+              onClick={handleCheckoutClick}
               className="block w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-lg transition-colors text-center shadow-lg hover:shadow-xl text-lg"
             >
               Kupuję raport — <span className="line-through text-white/50 decoration-red-300 decoration-2 mr-1">69,99 zł</span> <span className="text-xl font-extrabold">29,99 zł</span>
@@ -321,6 +347,4 @@ export default function KupRaportPage() {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-slate-400">Ładowanie...</div>}>
       <KupRaportContent />
-    </Suspense>
-  );
-        }
+    </Suspense>
